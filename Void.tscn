@@ -14,8 +14,8 @@ extents = Vector2( 127.011, 57.3468 )
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 510.159, 297.426 )
-scale = Vector2( 119.024, 107.079 )
+position = Vector2( 510.16, 297.427 )
+scale = Vector2( 307.236, 357.483 )
 texture = ExtResource( 3 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]

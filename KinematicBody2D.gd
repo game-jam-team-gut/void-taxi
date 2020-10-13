@@ -1,34 +1,39 @@
 extends KinematicBody2D
 
-export (int) var speed = 0 #początkowa szybkość
-export (float) var rotation_speed = 1.1 #współczynnik obrotu
+export (int) var speed = 0 #initial speed
+export (float) var rotation_speed = 1.1 #rotation factor
 
-var velocity = Vector2() #prędkość
-var rotation_dir #kierunek obrotu
+var velocity = Vector2()
+var rotation_dir #rotation direction
 
 func get_input():
-	rotation_dir = 0 #początkowy kierunek obrotu
+	rotation_dir = 0 #initial rotation direction
 	velocity = Vector2()
-	if Input.is_action_pressed('ui_right'): #prawo
-		if(speed>55 or speed<-55): #obrót zależny od szybkości, żeby nie dało się obracać w miejscu
-			rotation_dir += 1 #kierunek obrotu
-	if Input.is_action_pressed('ui_left'): #lewo
-		if(speed>55 or speed<-55): #obrót zależny od szybkości, żeby nie dało się obracać w miejscu
-			rotation_dir -= 1 #kierunek obrotu
-	if Input.is_action_pressed('ui_up'): #przód
-		if (speed < 440): #maksymalna szybkość do przodu
-			speed=speed+4 #przyspieszenie do przodu
+	if Input.is_action_pressed('ui_right'): #right
+		if(speed>55 or speed<-55): #rotation depending on the speed, so you can't turn in place
+			rotation_dir += 1 #rotation direction
+	if Input.is_action_pressed('ui_left'): #left
+		if(speed>75 or speed<-75): #rotation depending on the speed, so you can't turn in place
+			rotation_dir -= 1 #rotation direction
+	if Input.is_action_pressed('ui_up'): #forward
+		if (speed < 440): #maximum speed forward
+			speed=speed+4 #forward acceleration
 		velocity = Vector2(speed, 0).rotated(rotation)
-	else: speed=speed-4 #nie usuwać mi tego
-	if Input.is_action_pressed('ui_down'): #tył
-		if (speed > -220): #maksymalna szybkość do tyłu
-			speed=speed-2 #przyspieszenie do tyłu
+	else: speed=speed-4 #don't delete
+	if Input.is_action_pressed('ui_down'): #backwards
+		if (speed > -220): #maximum speed backwards
+			speed=speed-2 #backwards acceleration
 			if(speed>0):
-				speed=speed-8 #hamowanie
+				speed=speed-32 #brakes
 		velocity = Vector2(speed, 0).rotated(rotation)
-	else: speed=speed+4 #nie usuwać mi tego
-	if InputDefault: #utrzymanie prędkości
-		velocity = Vector2(speed, 0).rotated(rotation)
+	else: speed=speed+4 #don't delete
+	if InputDefault: #continuous drive at the last registered speed after no user input
+		velocity = Vector2(speed, 0).rotated(rotation) 
+	if Input.is_action_pressed('ui_up')==false and Input.is_action_pressed('ui_down')==false: #slowing down after no user input
+		if (speed > 0):
+			speed=speed-4
+		elif (speed < 0):
+			speed=speed+2
 
 func _physics_process(delta):
 	get_input()
