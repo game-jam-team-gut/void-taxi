@@ -5,7 +5,7 @@
 [ext_resource path="res://Void/background.png" type="Texture" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.0757, 32.9868 )
 
 [node name="Void" type="Node2D"]
@@ -14,7 +14,7 @@ extents = Vector2( 32.0757, 32.9868 )
 scroll_base_scale = Vector2( 0.5, 0.5 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 1920, 1080 )
+motion_mirroring = Vector2( 1920, 1079 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
 scale = Vector2( 2.5, 2.5 )
@@ -28,7 +28,7 @@ position = Vector2( -159.422, -1077 )
 position = Vector2( 912.235, 487.492 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D/CollisionShape2D"]
 texture = ExtResource( 4 )
@@ -37,7 +37,7 @@ texture = ExtResource( 4 )
 position = Vector2( 488.235, 491.492 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D2/CollisionShape2D"]
 texture = ExtResource( 4 )
@@ -46,7 +46,7 @@ texture = ExtResource( 4 )
 position = Vector2( 160.235, 283.492 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D3/CollisionShape2D"]
 texture = ExtResource( 4 )
@@ -55,7 +55,7 @@ texture = ExtResource( 4 )
 position = Vector2( 772.235, 151.492 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D4/CollisionShape2D"]
 texture = ExtResource( 4 )
@@ -64,7 +64,7 @@ texture = ExtResource( 4 )
 position = Vector2( 2279.53, 329.791 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D5/CollisionShape2D"]
 texture = ExtResource( 4 )
