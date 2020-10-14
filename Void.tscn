@@ -27,8 +27,12 @@ texture = ExtResource( 1 )
 current = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="KinematicBody2D"]
+scroll_base_scale = Vector2( 0.5, 0.5 )
 
-[node name="Sprite" type="Sprite" parent="KinematicBody2D/ParallaxBackground"]
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="KinematicBody2D/ParallaxBackground"]
+motion_mirroring = Vector2( 1920, 1080 )
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D/ParallaxBackground/ParallaxLayer2"]
 scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 3 )
 centered = false
