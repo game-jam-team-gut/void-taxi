@@ -50,6 +50,9 @@ func get_input():
 			speed -= SLOWING_FACTOR_WHEN_MOVING_FORWARD
 		elif (speed < 0):
 			speed += SLOWING_FACTOR_WHEN_MOVING_BACKWARDS
+			
+	if Input.is_action_pressed('ui_cancel'):
+		get_tree().quit()
 	
 	if collision: #bounce mechanic
 		speed = - speed * BOUNCE_FACTOR
@@ -60,3 +63,18 @@ func _physics_process(delta):
 	get_input()
 	rotation += rotation_dir * ROTATION_FACTOR * delta
 	collision = move_and_collide(velocity * delta) #registering collisions for bounce mechanic
+	$Label.text = var2str(money) + "$"
+
+export var money=0
+var passenger_1_in_taxi=false
+var passenger_1_at_destination=false
+
+func _on_Area2D_body_entered(body):
+	if passenger_1_in_taxi==false  and passenger_1_at_destination==false:
+		passenger_1_in_taxi=true
+
+func _on_Area2D2_body_entered(body):
+	if passenger_1_in_taxi==true:
+		passenger_1_in_taxi=false
+		passenger_1_at_destination=true
+		money+= randi()%10*100
