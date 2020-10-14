@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/void-taxi.png-ef8c5bd40b6261200779ff90304c7635.stex"
+path="res://.import/void-taxi.png-77d102e3eb3a42f4b7d085d7e098bd31.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://void-taxi.png"
-dest_files=[ "res://.import/void-taxi.png-ef8c5bd40b6261200779ff90304c7635.stex" ]
+source_file="res://Void/void-taxi.png"
+dest_files=[ "res://.import/void-taxi.png-77d102e3eb3a42f4b7d085d7e098bd31.stex" ]
 
 [params]
 
