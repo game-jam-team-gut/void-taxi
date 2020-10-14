@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Void/PlanetSystem/Planet.gd" type="Script" id=1]
+[ext_resource path="res://Void/PlanetSystem/planet_red.png" type="Texture" id=2]
+
+[node name="Planet" type="PathFollow2D"]
+position = Vector2( 4868.54, 562.696 )
+rotation = 3.09238
+rotate = false
+script = ExtResource( 1 )
+move_speed = 100.0
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
