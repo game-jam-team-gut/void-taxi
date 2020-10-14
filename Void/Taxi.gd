@@ -9,10 +9,13 @@ const FORWARD_ACCELERATION = 4
 const BACKWARDS_ACCELERATION = 2
 const SLOWING_FACTOR_WHEN_MOVING_FORWARD = 4
 const SLOWIG_FACTOR_WHEN_MOVING_BACKWARDS = 2
+const BOUNCE_FACTOR = 0.5
 
 var speed = INITIAL_SPEED
 var velocity: Vector2
 var rotation_dir
+var collision
+var x = 0
 
 func get_input():
 	rotation_dir = 0 #initial rotation direction
@@ -40,16 +43,18 @@ func get_input():
 		velocity = Vector2(speed, 0).rotated(rotation)
 	else: speed += FORWARD_ACCELERATION #don't delete
 	
-	if InputDefault: #continuous drive at the last registered speed after no user input
-		velocity = Vector2(speed, 0).rotated(rotation) 
-	
 	if Input.is_action_pressed('ui_up') == false and Input.is_action_pressed('ui_down') == false: #slowing down after no user input
 		if (speed > 0):
 			speed -= SLOWING_FACTOR_WHEN_MOVING_FORWARD
 		elif (speed < 0):
 			speed += SLOWIG_FACTOR_WHEN_MOVING_BACKWARDS
+	
+	if collision: #bounce mechanic
+		speed = - speed * BOUNCE_FACTOR
+	
+	velocity = Vector2(speed, 0).rotated(rotation)
 
 func _physics_process(delta):
 	get_input()
 	rotation += rotation_dir * ROTATION_SPEED * delta
-	velocity = move_and_slide(velocity)
+	collision = move_and_collide(velocity * delta) #registering collisions for bounce mechanic
