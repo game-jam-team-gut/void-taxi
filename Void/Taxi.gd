@@ -63,18 +63,29 @@ func _physics_process(delta):
 	get_input()
 	rotation += rotation_dir * ROTATION_FACTOR * delta
 	collision = move_and_collide(velocity * delta) #registering collisions for bounce mechanic
-	$Label.text = var2str(money) + "$"
+	$CanvasLayer/Label.text = "Money: " + var2str(money) + "$"
 
-export var money=0
-var passenger_1_in_taxi=false
-var passenger_1_at_destination=false
+var money=0
+var random_money
+var passenger_in_taxi=false
+var passenger_in_taxi_1=false
+var passenger_at_destination_1=false
 
 func _on_Area2D_body_entered(body):
-	if passenger_1_in_taxi==false  and passenger_1_at_destination==false:
-		passenger_1_in_taxi=true
+	if passenger_in_taxi_1==false  and passenger_at_destination_1==false and passenger_in_taxi==false:
+		passenger_in_taxi_1=true
+		passenger_in_taxi=true
 
 func _on_Area2D2_body_entered(body):
-	if passenger_1_in_taxi==true:
-		passenger_1_in_taxi=false
-		passenger_1_at_destination=true
-		money+= randi()%10*100
+	if passenger_in_taxi_1==true:
+		passenger_in_taxi_1=false
+		passenger_at_destination_1=true
+		passenger_in_taxi=false
+		money_randomizer()
+		money += random_money
+		
+func money_randomizer():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var current_seed = rng.get_seed()
+	random_money = rng.randi_range(100,1000)
