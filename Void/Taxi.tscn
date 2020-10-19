@@ -55,3 +55,4 @@ __meta__ = {
 }
 [connection signal="timeout" from="LandStartEnginesTimer" to="." method="_on_LandStartEnginesTimer_timeout"]
 [connection signal="area_entered" from="LandDetector" to="." method="_on_LandDetector_area_entered"]
+[connection signal="area_exited" from="LandDetector" to="." method="_on_LandDetector_area_exited"]
