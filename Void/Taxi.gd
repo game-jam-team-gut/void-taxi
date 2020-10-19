@@ -16,6 +16,9 @@ var velocity: Vector2
 var rotation_dir
 var collision
 var x = 0
+var money = 0
+var random_money
+var health = 100
 
 func get_input():
 	rotation_dir = 0 #initial rotation direction
@@ -63,10 +66,16 @@ func _physics_process(delta):
 	get_input()
 	rotation += rotation_dir * ROTATION_FACTOR * delta
 	collision = move_and_collide(velocity * delta) #registering collisions for bounce mechanic
-	$CanvasLayer/Label.text = "Money: " + var2str(money) + "$"
+	$CanvasLayer/VBoxContainer/Health.text = "Health: " + var2str(health) + " HP" #current health
+	$CanvasLayer/VBoxContainer/Money.text = "Money: " + var2str(money) + " $" #current money
 
-var money=0
-var random_money
+func money_randomizer():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var current_seed = rng.get_seed()
+	random_money = rng.randi_range(100,1000)
+
+#From this line starts the passenger system prototype
 var passenger_in_taxi=false
 var passenger_in_taxi_1=false
 var passenger_at_destination_1=false
@@ -83,9 +92,3 @@ func _on_Area2D2_body_entered(body):
 		passenger_in_taxi=false
 		money_randomizer()
 		money += random_money
-		
-func money_randomizer():
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var current_seed = rng.get_seed()
-	random_money = rng.randi_range(100,1000)
