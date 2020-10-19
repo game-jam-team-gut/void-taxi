@@ -17,9 +17,6 @@ var rotation_dir
 var collision
 var x = 0
 
-var landed = false
-onready var land_start_engines_timer = get_node("LandStartEnginesTimer")
-
 func get_input():
 	rotation_dir = 0 #initial rotation direction
 	velocity = Vector2.ZERO
@@ -37,7 +34,7 @@ func get_input():
 			speed += FORWARD_ACCELERATION
 		if(speed < 0):
 			speed += 32 #brakes
-		velocity = Vector2(speed, 0).rotated(global_rotation)
+		velocity = Vector2(speed, 0).rotated(rotation)
 	else: speed -= FORWARD_ACCELERATION #don't delete
 	
 	if Input.is_action_pressed('ui_down'): #backwards
@@ -45,7 +42,7 @@ func get_input():
 			speed -= BACKWARDS_ACCELERATION #backwards acceleration
 			if(speed > 0):
 				speed -= 32 #brakes
-		velocity = Vector2(speed, 0).rotated(global_rotation)
+		velocity = Vector2(speed, 0).rotated(rotation)
 	else: speed += FORWARD_ACCELERATION #don't delete
 	
 	if Input.is_action_pressed('ui_up') == false and Input.is_action_pressed('ui_down') == false: #slowing down after no user input
@@ -60,23 +57,13 @@ func get_input():
 	if collision: #bounce mechanic
 		speed = - speed * BOUNCE_FACTOR
 	
-	velocity = Vector2(speed, 0).rotated(global_rotation)
+	velocity = Vector2(speed, 0).rotated(rotation)
 
 func _physics_process(delta):
-	if not landed:
-		get_input()
-		global_rotation += rotation_dir * ROTATION_FACTOR * delta
-		collision = move_and_collide(velocity * delta) #registering collisions for bounce mechanic
-		$CanvasLayer/Label.text = "Money: " + var2str(money) + "$"
-	else:
-		if Input.is_action_just_pressed('ui_up'):
-			land_start_engines_timer.start()
-		if Input.is_action_just_released('ui_up'):
-			land_start_engines_timer.stop()
-
-
-func _on_LandStartEnginesTimer_timeout():
-	landed = false
+	get_input()
+	rotation += rotation_dir * ROTATION_FACTOR * delta
+	collision = move_and_collide(velocity * delta) #registering collisions for bounce mechanic
+	$CanvasLayer/Label.text = "Money: " + var2str(money) + "$"
 
 var money=0
 var random_money
@@ -102,16 +89,3 @@ func money_randomizer():
 	rng.randomize()
 	var current_seed = rng.get_seed()
 	random_money = rng.randi_range(100,1000)
-
-
-func _on_LandDetector_area_entered(area):
-	print("landed!")
-	var global_pos = global_position
-	var rot = get_global_rotation()
-	get_parent().remove_child(self)
-	area.get_parent().add_child(self)
-	set_global_position(global_pos)
-	set_global_rotation(rot)
-	landed = true
-
-
