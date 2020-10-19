@@ -6,8 +6,6 @@ var current_money = 0
 var max_durability = 100
 var current_durability = max_durability
 
-var current
-
 
 ### TODO the whole system
 ### stats data such as durability, money, passengers, max_passenger count, and logic updating it to the UI should live here

@@ -18,10 +18,7 @@ var collision
 var x = 0
 
 var landed = false
-var can_land = true
 onready var land_start_engines_timer = get_node("LandStartEnginesTimer")
-
-onready var world = get_tree().get_root().get_node("Void")
 
 func get_input():
 	rotation_dir = 0 #initial rotation direction
@@ -79,10 +76,7 @@ func _physics_process(delta):
 
 
 func _on_LandStartEnginesTimer_timeout():
-	##TODO make better starting mechanic, add fancy animation, ...
 	landed = false
-	position += position/5
-	reparent(world)
 
 var money=0
 var random_money
@@ -111,20 +105,13 @@ func money_randomizer():
 
 
 func _on_LandDetector_area_entered(area):
-	if can_land:
-		print("landed!")
-		reparent(area)
-		landed = true
-		can_land = false
-
-func _on_LandDetector_area_exited(area):
-	yield(get_tree().create_timer(1), "timeout")
-	can_land = true
-
-func reparent(new_parent):
+	print("landed!")
 	var global_pos = global_position
 	var rot = get_global_rotation()
 	get_parent().remove_child(self)
-	new_parent.get_parent().add_child(self)
+	area.get_parent().add_child(self)
 	set_global_position(global_pos)
 	set_global_rotation(rot)
+	landed = true
+
+

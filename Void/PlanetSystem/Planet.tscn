@@ -4,7 +4,7 @@
 [ext_resource path="res://Void/PlanetSystem/planet_red.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 441.897
+radius = 427.117
 
 [node name="Planet" type="PathFollow2D"]
 position = Vector2( 4868.54, 562.696 )
