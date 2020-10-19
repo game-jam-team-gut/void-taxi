@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Void/PlanetSystem/sun.png" type="Texture" id=1]
 [ext_resource path="res://Void/PlanetSystem/Planet.tscn" type="PackedScene" id=2]
@@ -13,6 +13,9 @@ _data = {
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -611.951, -3570.83, 0, 0, 0, 0, 457.799, -3499.5, 0, 0, 0, 0, 1546.37, -2975.37, 0, 0, 0, 0, 2393.04, -2491.56, 0, 0, 0, 0, 3400.97, -1745.69, 0, 0, 0, 0, 4146.85, -1120.77, 0, 0, 0, 0, 4731.45, -233.785, 0, 0, 0, 0, 5013.67, 532.247, 0, 0, 0, 0, 4711.29, 1640.98, 0, 0, 0, 0, 4293.34, 2121.9, 0, 0, 0, 0, 3607.17, 2821.53, 0, 0, 0, 0, 2719.19, 3117.52, 0, 0, 0, 0, 1400.66, 3265.52, 0, 0, 0, 0, 660.673, 3413.52, 0, 0, 0, 0, -92.7705, 3359.7, 0, 0, 0, 0, -940.395, 3130.98, 0, 0, 0, 0, -1761.11, 2727.35, 0, 0, 0, 0, -2339.65, 2256.44, 0, 0, 0, 0, -2807.92, 1761.93, 0, 0, 0, 0, -3352.2, 1237.8, 0, 0, 0, 0, -3836.01, 290.342, 0, 0, 0, 0, -3856.17, -818.389, 0, 0, 0, 0, -3735.22, -1362.67, 0, 0, 0, 0, -3553.79, -1806.17, 0, 0, 0, 0, -3090.14, -2209.34, 0, 0, 0, 0, -2666.8, -2531.88, 0, 0, 0, 0, -2102.36, -2834.26, 0, 0, 0, 0, -1437.12, -3176.96, 0, 0, 0, 0, -771.885, -3559.98, 0, 0, 0, 0, -669.097, -3574, 0, 0, 0, 0, -611.951, -3570.83 )
 }
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 563.508
 
 [node name="PlanetSystem" type="Node2D"]
 
@@ -34,5 +37,8 @@ move_speed = 150.0
 
 [node name="Sprite" parent="Planet_orbit_1/Planet" index="0"]
 texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="Planet_orbit_1/Planet/Area2D" index="0"]
+shape = SubResource( 3 )
 
 [editable path="Planet_orbit_1/Planet"]
