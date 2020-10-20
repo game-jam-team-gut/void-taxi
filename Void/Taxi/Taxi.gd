@@ -41,19 +41,19 @@ func get_input():
 	
 	if Input.is_action_pressed('ui_up'): #forward
 		if not collision_raycast_forward.is_colliding():
-			speed = lerp(speed, MAX_FORWARD_SPEED, FORWARD_ACCELERATION_WEIGHT)
+			speed = int(lerp(speed, MAX_FORWARD_SPEED, FORWARD_ACCELERATION_WEIGHT))
 			velocity = Vector2(speed, 0).rotated(rotation)
 	
 	if Input.is_action_pressed('ui_down'): #backwards
 		if not collision_raycast_backwards.is_colliding():
-			speed = lerp(speed, -MAX_BACKWARDS_SPEED, BACKWARDS_ACCELERATION_WEIGHT)
+			speed = int(lerp(speed, -MAX_BACKWARDS_SPEED, BACKWARDS_ACCELERATION_WEIGHT))
 			velocity = Vector2(speed, 0).rotated(rotation)
 	
 	if Input.is_action_pressed('ui_up') == false and Input.is_action_pressed('ui_down') == false: #slowing down after no user input
 		if (speed > 0):
-			speed = lerp(speed, 0, SLOW_WEIGHT_WHEN_MOVING_FORWARD)
+			speed = int(lerp(speed, 0, SLOW_WEIGHT_WHEN_MOVING_FORWARD))
 		elif (speed < 0):
-			speed = lerp(speed, 0, SLOW_WEIGHT_WHEN_MOVING_BACKWARDS)
+			speed = int(lerp(speed, 0, SLOW_WEIGHT_WHEN_MOVING_BACKWARDS))
 	
 	if Input.is_action_pressed('ui_cancel'):
 		get_tree().quit()
@@ -67,17 +67,23 @@ func get_input():
 	velocity = Vector2(speed, 0).rotated(rotation)
 
 func _physics_process(delta):
+	check_health()
 	get_input()
+	taxi_UI()
 	rotation += rotation_dir * ROTATION_FACTOR * delta
 	collision = move_and_collide(velocity * delta) #registering collisions for bounce mechanic
-	$CanvasLayer/VBoxContainer/Health.text = "Health: " + var2str(health) + " HP" #current health
-	$CanvasLayer/VBoxContainer/Money.text = "Money: " + var2str(money) + " $" #current money
-	if collision_raycast_forward.is_colliding() || collision_raycast_backwards.is_colliding():
-		$CanvasLayer/VBoxContainer/Speed.text = "Speed: " + var2str(0) + " footballfields/s"
-	else:
-		$CanvasLayer/VBoxContainer/Speed.text = "Speed: " + var2str(abs(speed)) + " footballfields/s"
+
+func check_health():
 	if(health<=0): #game over
 		get_tree().change_scene("res://MainMenu.tscn")
+
+func taxi_UI():
+	$CanvasLayer/HBoxContainer/VBoxContainer/Health.text = "Health: " + var2str(health) + " HP" #current health
+	$CanvasLayer/HBoxContainer/VBoxContainer2/Money.text = "Money: " + var2str(money) + " $" #current money
+	if collision_raycast_forward.is_colliding() || collision_raycast_backwards.is_colliding():
+		$CanvasLayer/HBoxContainer/VBoxContainer/Speed.text = "Speed: 0 % c"
+	else:
+		$CanvasLayer/HBoxContainer/VBoxContainer/Speed.text = "Speed: " + var2str(abs(speed/100)) + " % c"
 
 func emit_pickup_signal(planet):
 	emit_signal("passenger_pickup", planet)

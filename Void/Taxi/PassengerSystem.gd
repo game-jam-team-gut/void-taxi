@@ -3,8 +3,9 @@ extends Node
 
 var max_number_of_passengers = 4
 var current_passengers = 0
+var random_money
 
-onready var passengers_label = get_node("../CanvasLayer/VBoxContainer/Passengers")
+onready var passengers_label = get_node("../CanvasLayer/HBoxContainer/VBoxContainer2/Passengers")
 
 func _ready():
 	update_passenger_UI()
@@ -23,6 +24,12 @@ func _on_PassengerDetector_area_entered(area):
 	elif area.is_in_group("Destination"):
 		current_passengers = 0
 		update_passenger_UI()
-		get_parent().money += 100 #change hopefully to something different, maybe based on time, maybe on passenger type, idk
+		money_randomizer()
+		get_parent().money += random_money
 		get_parent().emit_passenger_delivered_signal()
 		area.queue_free()
+
+func money_randomizer():
+	var rng2 = RandomNumberGenerator.new()
+	rng2.randomize()
+	random_money = rng2.randi_range(100,1000)
