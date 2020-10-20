@@ -10,6 +10,7 @@ const BACKWARDS_ACCELERATION = 2
 const SLOWING_FACTOR_WHEN_MOVING_FORWARD = 4
 const SLOWING_FACTOR_WHEN_MOVING_BACKWARDS = 2
 const BOUNCE_FACTOR = 0.5
+const DESTRUCTION_FACTOR = 75
 
 var speed = INITIAL_SPEED
 var velocity: Vector2
@@ -38,7 +39,8 @@ func get_input():
 		if(speed < 0):
 			speed += 32 #brakes
 		velocity = Vector2(speed, 0).rotated(rotation)
-	else: speed -= FORWARD_ACCELERATION #don't delete
+	else:
+		speed -= FORWARD_ACCELERATION #don't delete
 	
 	if Input.is_action_pressed('ui_down'): #backwards
 		if (speed > -MAX_BACKWARDS_SPEED):
@@ -53,12 +55,16 @@ func get_input():
 			speed -= SLOWING_FACTOR_WHEN_MOVING_FORWARD
 		elif (speed < 0):
 			speed += SLOWING_FACTOR_WHEN_MOVING_BACKWARDS
-			
+	
 	if Input.is_action_pressed('ui_cancel'):
 		get_tree().quit()
 	
 	if collision: #bounce mechanic
-		speed = - speed * BOUNCE_FACTOR
+		if(speed>33):
+			health=int(health-speed/DESTRUCTION_FACTOR)
+		if(speed<-33):
+			health=int(health+speed/DESTRUCTION_FACTOR)
+		speed = int(-speed * BOUNCE_FACTOR)
 	
 	velocity = Vector2(speed, 0).rotated(rotation)
 
@@ -68,11 +74,16 @@ func _physics_process(delta):
 	collision = move_and_collide(velocity * delta) #registering collisions for bounce mechanic
 	$CanvasLayer/VBoxContainer/Health.text = "Health: " + var2str(health) + " HP" #current health
 	$CanvasLayer/VBoxContainer/Money.text = "Money: " + var2str(money) + " $" #current money
+	if(speed >= 0): #current speed
+		$CanvasLayer/VBoxContainer/Speed.text = "Speed: " + var2str(speed) + " km/h"
+	if(speed < 0): #current speed
+		$CanvasLayer/VBoxContainer/Speed.text = "Speed: " + var2str(-speed) + " km/h"
+	if(health<=0): #game over
+		get_tree().change_scene("res://MainMenu.tscn")
 
 func money_randomizer():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var current_seed = rng.get_seed()
 	random_money = rng.randi_range(100,1000)
 
 #From this line starts the passenger system prototype
