@@ -3,8 +3,8 @@ extends KinematicBody2D
 const INITIAL_SPEED = 0
 const ROTATION_FACTOR = 1.1
 const MIN_SPEED_TO_ROTATE = 55
-const MAX_FORWARD_SPEED = 220
-const MAX_BACKWARDS_SPEED = 110
+const MAX_FORWARD_SPEED = 4400
+const MAX_BACKWARDS_SPEED = 2200
 const FORWARD_ACCELERATION = 4
 const BACKWARDS_ACCELERATION = 2
 const SLOWING_FACTOR_WHEN_MOVING_FORWARD = 4
@@ -39,8 +39,6 @@ func get_input():
 		if(speed < 0):
 			speed += 32 #brakes
 		velocity = Vector2(speed, 0).rotated(rotation)
-	else:
-		speed -= FORWARD_ACCELERATION #don't delete
 	
 	if Input.is_action_pressed('ui_down'): #backwards
 		if (speed > -MAX_BACKWARDS_SPEED):
@@ -48,7 +46,6 @@ func get_input():
 			if(speed > 0):
 				speed -= 32 #brakes
 		velocity = Vector2(speed, 0).rotated(rotation)
-	else: speed += FORWARD_ACCELERATION #don't delete
 	
 	if Input.is_action_pressed('ui_up') == false and Input.is_action_pressed('ui_down') == false: #slowing down after no user input
 		if (speed > 0):
@@ -74,10 +71,10 @@ func _physics_process(delta):
 	collision = move_and_collide(velocity * delta) #registering collisions for bounce mechanic
 	$CanvasLayer/VBoxContainer/Health.text = "Health: " + var2str(health) + " HP" #current health
 	$CanvasLayer/VBoxContainer/Money.text = "Money: " + var2str(money) + " $" #current money
-	if(speed >= 0): #current speed
-		$CanvasLayer/VBoxContainer/Speed.text = "Speed: " + var2str(speed) + " km/h"
+	if(speed > 0): #current speed
+		$CanvasLayer/VBoxContainer/Speed.text = "Speed: " + var2str(speed) + " footballfields/s"
 	if(speed < 0): #current speed
-		$CanvasLayer/VBoxContainer/Speed.text = "Speed: " + var2str(-speed) + " km/h"
+		$CanvasLayer/VBoxContainer/Speed.text = "Speed: " + var2str(-speed) + " footballfields/s"
 	if(health<=0): #game over
 		get_tree().change_scene("res://MainMenu.tscn")
 
