@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+signal passenger_pickup(planet)
+signal passenger_delivered
+
 const INITIAL_SPEED = 0
 const ROTATION_FACTOR = 1.1
 const MIN_SPEED_TO_ROTATE = 55
@@ -18,9 +21,7 @@ var velocity: Vector2
 var rotation_dir
 var collision
 
-var x = 0
 var money = 0
-var random_money
 var health = 100
 
 onready var collision_raycast_forward = get_node("RayCast2DForward")
@@ -78,25 +79,8 @@ func _physics_process(delta):
 	if(health<=0): #game over
 		get_tree().change_scene("res://MainMenu.tscn")
 
-func money_randomizer():
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	random_money = rng.randi_range(100,1000)
+func emit_pickup_signal(planet):
+	emit_signal("passenger_pickup", planet)
 
-#From this line starts the passenger system prototype
-var passenger_in_taxi=false
-var passenger_in_taxi_1=false
-var passenger_at_destination_1=false
-
-func _on_Area2D_body_entered(body):
-	if passenger_in_taxi_1==false  and passenger_at_destination_1==false and passenger_in_taxi==false:
-		passenger_in_taxi_1=true
-		passenger_in_taxi=true
-
-func _on_Area2D2_body_entered(body):
-	if passenger_in_taxi_1==true:
-		passenger_in_taxi_1=false
-		passenger_at_destination_1=true
-		passenger_in_taxi=false
-		money_randomizer()
-		money += random_money
+func emit_passenger_delivered_signal():
+	emit_signal("passenger_delivered")

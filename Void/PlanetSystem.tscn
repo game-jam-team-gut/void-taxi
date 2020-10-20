@@ -23,12 +23,16 @@ texture = ExtResource( 1 )
 position = Vector2( -5335.08, -2648.93 )
 curve = SubResource( 1 )
 
-[node name="Planet" parent="Planet_orbit_0" instance=ExtResource( 2 )]
+[node name="Planet" parent="Planet_orbit_0" groups=[
+"Planet",
+] instance=ExtResource( 2 )]
 
 [node name="Planet_orbit_1" type="Path2D" parent="."]
 curve = SubResource( 2 )
 
-[node name="Planet" parent="Planet_orbit_1" instance=ExtResource( 2 )]
+[node name="Planet" parent="Planet_orbit_1" groups=[
+"Planet",
+] instance=ExtResource( 2 )]
 position = Vector2( -611.951, -3570.83 )
 move_speed = 150.0
 
