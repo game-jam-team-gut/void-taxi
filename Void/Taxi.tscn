@@ -76,3 +76,13 @@ custom_colors/font_color = Color( 0, 0.27451, 0.501961, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="RayCast2DForward" type="RayCast2D" parent="."]
+scale = Vector2( 1, 10 )
+enabled = true
+cast_to = Vector2( 130, 0 )
+
+[node name="RayCast2DBackwards" type="RayCast2D" parent="."]
+scale = Vector2( 1, 10 )
+enabled = true
+cast_to = Vector2( -130, 0 )
