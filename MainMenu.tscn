@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://MainMenu/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://MainMenu/MainMenuNormalFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://MainMenu/MainMenuTitleFont.tres" type="DynamicFont" id=3]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -11,26 +13,65 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 76.9994
-margin_top = 46.2971
-margin_right = 161.999
-margin_bottom = 67.2971
+margin_left = 147.555
+margin_top = 109.293
+margin_right = 630.555
+margin_bottom = 198.293
+custom_fonts/font = ExtResource( 3 )
 text = "Void taxi"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -73.5
-margin_top = -23.0
-margin_right = 73.5
-margin_bottom = 23.0
+margin_left = -67.5
+margin_top = -57.5
+margin_right = 67.5
+margin_bottom = 57.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+margin_right = 135.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 2 )
 text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 37.0
+margin_right = 135.0
+margin_bottom = 37.0
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+margin_top = 41.0
+margin_right = 135.0
+margin_bottom = 74.0
+custom_fonts/font = ExtResource( 2 )
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 78.0
+margin_right = 135.0
+margin_bottom = 78.0
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+margin_top = 82.0
+margin_right = 135.0
+margin_bottom = 115.0
+custom_fonts/font = ExtResource( 2 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_Button_pressed"]
