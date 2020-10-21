@@ -4,8 +4,8 @@ signal passenger_pickup(planet)
 signal passenger_delivered(planet)
 
 const INITIAL_SPEED = 0
-const ROTATION_FACTOR = 1.1
-const MIN_SPEED_TO_ROTATE = 55
+const ROTATION_FACTOR = 1.2
+const MIN_SPEED_TO_ROTATE = 100
 const MAX_FORWARD_SPEED = 4400
 const MAX_BACKWARDS_SPEED = 2200
 const FORWARD_ACCELERATION_WEIGHT = 0.004
@@ -79,7 +79,7 @@ func check_health():
 
 func taxi_UI():
 	$CanvasLayer/HBoxContainer/VBoxContainer/Health.text = "Health: " + var2str(health) + " HP" #current health
-	$CanvasLayer/HBoxContainer/VBoxContainer2/Money.text = "Money: " + var2str(money) + " $" #current money
+	$CanvasLayer/HBoxContainer2/VBoxContainer2/Money.text = "Money: " + var2str(money) + " $" #current money
 	if collision_raycast_forward.is_colliding() || collision_raycast_backwards.is_colliding():
 		$CanvasLayer/HBoxContainer/VBoxContainer/Speed.text = "Speed: 0 footballfields/s"
 	else:

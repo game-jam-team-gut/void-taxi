@@ -61,15 +61,14 @@ current = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-margin_left = 19.5135
-margin_right = 1919.51
-margin_bottom = 250.0
+margin_left = 10.0
+margin_right = 1500.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
-margin_bottom = 250.0
+margin_bottom = 90.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -91,15 +90,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
-margin_left = 4.0
-margin_right = 4.0
-margin_bottom = 250.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer"]
+margin_left = 1500.0
+margin_right = 1910.0
+grow_horizontal = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Money" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer2"]
+margin_bottom = 90.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Money" type="Label" parent="CanvasLayer/HBoxContainer2/VBoxContainer2"]
 margin_bottom = 43.0
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.129412, 0.619608, 0.164706, 1 )
@@ -107,7 +112,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Passengers" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+[node name="Passengers" type="Label" parent="CanvasLayer/HBoxContainer2/VBoxContainer2"]
 margin_top = 47.0
 margin_bottom = 90.0
 custom_fonts/font = SubResource( 6 )

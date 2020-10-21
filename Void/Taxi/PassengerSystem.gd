@@ -5,7 +5,7 @@ var max_number_of_passengers = 4
 var current_passengers = 0
 var random_money
 
-onready var passengers_label = get_node("../CanvasLayer/HBoxContainer/VBoxContainer2/Passengers")
+onready var passengers_label = get_node("../CanvasLayer/HBoxContainer2/VBoxContainer2/Passengers")
 
 func _ready():
 	update_passenger_UI()
