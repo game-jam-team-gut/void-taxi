@@ -3,7 +3,9 @@
 [ext_resource path="res://Void/PlanetSystem/Planet.gd" type="Script" id=1]
 [ext_resource path="res://Void/PlanetSystem/planet_red.png" type="Texture" id=2]
 
-[node name="Planet" type="PathFollow2D"]
+[node name="Planet" type="PathFollow2D" groups=[
+"Planet",
+]]
 position = Vector2( 4868.54, 562.696 )
 rotation = 3.09238
 rotate = false
