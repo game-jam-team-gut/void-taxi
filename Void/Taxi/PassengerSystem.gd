@@ -26,7 +26,7 @@ func _on_PassengerDetector_area_entered(area):
 		update_passenger_UI()
 		money_randomizer()
 		get_parent().money += random_money
-		get_parent().emit_passenger_delivered_signal()
+		get_parent().emit_passenger_delivered_signal(area.get_parent())
 		area.queue_free()
 
 func money_randomizer():

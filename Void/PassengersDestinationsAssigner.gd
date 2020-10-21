@@ -8,14 +8,17 @@ onready var destination_object = preload("res://Void/DestinationPoint.tscn")
 
 func _ready():
 	planets = get_tree().get_nodes_in_group("Planet")
-	create_passenger_pickup_point() #first passenger
+	create_passenger_pickup_point(null) #first passenger
 
-func create_passenger_pickup_point():
+func create_passenger_pickup_point(excluded_planet):
 	var passenger_pickup_point_instance = passenger_pickup_object.instance()
-	var planet = get_random_planet(null)
+	if excluded_planet:
+		var excluded_planet_r = calculate_approximately_planet_radius(excluded_planet)
+		if excluded_planet_r > 150:
+			excluded_planet = null
+	var planet = get_random_planet(excluded_planet)
 	planet.add_child(passenger_pickup_point_instance)
-	var planet_size = planet.get_node("Sprite").texture.get_size()
-	var r = sqrt(pow(planet_size.x,2) + pow(planet_size.y,2))/5
+	var r = calculate_approximately_planet_radius(planet)
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var x = rng.randf_range(-r, r)
@@ -52,10 +55,13 @@ func get_random_planet(excluded_planet):
 #func _process(delta):
 #	pass
 
+func calculate_approximately_planet_radius(planet):
+	var planet_size = planet.get_node("Sprite").texture.get_size()
+	return sqrt(pow(planet_size.x,2) + pow(planet_size.y,2))/5
 
 func _on_Taxi_passenger_pickup(planet):
 	create_destination(planet)
 
 
-func _on_Taxi_passenger_delivered():
-	create_passenger_pickup_point()
+func _on_Taxi_passenger_delivered(planet):
+	create_passenger_pickup_point(planet)

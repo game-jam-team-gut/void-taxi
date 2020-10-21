@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 signal passenger_pickup(planet)
-signal passenger_delivered
+signal passenger_delivered(planet)
 
 const INITIAL_SPEED = 0
 const ROTATION_FACTOR = 1.1
@@ -88,5 +88,5 @@ func taxi_UI():
 func emit_pickup_signal(planet):
 	emit_signal("passenger_pickup", planet)
 
-func emit_passenger_delivered_signal():
-	emit_signal("passenger_delivered")
+func emit_passenger_delivered_signal(planet):
+	emit_signal("passenger_delivered", planet)
