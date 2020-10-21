@@ -81,9 +81,9 @@ func taxi_UI():
 	$CanvasLayer/HBoxContainer/VBoxContainer/Health.text = "Health: " + var2str(health) + " HP" #current health
 	$CanvasLayer/HBoxContainer/VBoxContainer2/Money.text = "Money: " + var2str(money) + " $" #current money
 	if collision_raycast_forward.is_colliding() || collision_raycast_backwards.is_colliding():
-		$CanvasLayer/HBoxContainer/VBoxContainer/Speed.text = "Speed: 0 % c"
+		$CanvasLayer/HBoxContainer/VBoxContainer/Speed.text = "Speed: 0 footballfields/s"
 	else:
-		$CanvasLayer/HBoxContainer/VBoxContainer/Speed.text = "Speed: " + var2str(abs(speed/100)) + " % c"
+		$CanvasLayer/HBoxContainer/VBoxContainer/Speed.text = "Speed: " + var2str(abs(speed)) + " footballfields/s"
 
 func emit_pickup_signal(planet):
 	emit_signal("passenger_pickup", planet)
