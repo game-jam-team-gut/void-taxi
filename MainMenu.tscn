@@ -80,4 +80,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
