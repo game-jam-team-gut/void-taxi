@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Void/background.png" type="Texture" id=1]
+[ext_resource path="res://Void/testbg.png" type="Texture" id=1]
 [ext_resource path="res://WinCredits/MovingWinCredits.gd" type="Script" id=2]
 [ext_resource path="res://spaceranger.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://WinCredits/WinCredits.gd" type="Script" id=4]
@@ -30,8 +30,9 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 1 )
-offset = Vector2( 960, 540 )
+centered = false
 
 [node name="MovingWinCredits" type="KinematicBody2D" parent="."]
 script = ExtResource( 2 )

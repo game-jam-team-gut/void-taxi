@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Void/Taxi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Void/PlanetSystem.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Void/background.png" type="Texture" id=3]
+[ext_resource path="res://Void/testbg.png" type="Texture" id=3]
 [ext_resource path="res://Void/PassengersDestinationsAssigner.gd" type="Script" id=7]
 [ext_resource path="res://Void/AsteroidSpawner.gd" type="Script" id=10]
 
@@ -32,7 +32,7 @@ scroll_base_scale = Vector2( 0.5, 0.5 )
 motion_mirroring = Vector2( 1920, 1079 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
-scale = Vector2( 2.5, 2.5 )
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 3 )
 centered = false
 

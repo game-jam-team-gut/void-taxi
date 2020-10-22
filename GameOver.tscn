@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Void/background.png" type="Texture" id=1]
+[ext_resource path="res://Void/testbg.png" type="Texture" id=1]
 [ext_resource path="res://spaceranger.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://GameOver/GameOver.gd" type="Script" id=3]
 
@@ -29,6 +29,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 1 )
 centered = false
 
@@ -62,19 +63,19 @@ __meta__ = {
 }
 
 [node name="PlayButton" type="Button" parent="VBoxContainer2"]
-margin_right = 640.0
+margin_right = 514.0
 margin_bottom = 49.0
 custom_fonts/font = SubResource( 2 )
 text = "Try again"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2"]
 margin_top = 53.0
-margin_right = 640.0
+margin_right = 514.0
 margin_bottom = 53.0
 
 [node name="MainMenuButton" type="Button" parent="VBoxContainer2"]
 margin_top = 57.0
-margin_right = 640.0
+margin_right = 514.0
 margin_bottom = 106.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
@@ -82,7 +83,7 @@ text = "Back to Main Menu"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer2"]
 margin_top = 110.0
-margin_right = 640.0
+margin_right = 514.0
 margin_bottom = 110.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -90,7 +91,7 @@ __meta__ = {
 
 [node name="QuitButton" type="Button" parent="VBoxContainer2"]
 margin_top = 114.0
-margin_right = 640.0
+margin_right = 514.0
 margin_bottom = 163.0
 custom_fonts/font = SubResource( 4 )
 text = "Quit"

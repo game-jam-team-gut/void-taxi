@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Void/background.png" type="Texture" id=1]
+[ext_resource path="res://Void/testbg.png" type="Texture" id=1]
 [ext_resource path="res://spaceranger.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Credits/Credits.gd" type="Script" id=3]
 
@@ -23,8 +23,9 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 1 )
-offset = Vector2( 960, 540 )
+centered = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 960.0
