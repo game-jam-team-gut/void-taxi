@@ -1,5 +1,6 @@
 extends Node
 
+signal destination_set(destination)
 
 var planets
 
@@ -41,6 +42,7 @@ func create_destination(excluded_planet):
 	var y = rng.randf_range(-r, r)
 	destination_instance.position = Vector2(x, y)
 	destination_instance.set_global_rotation(0)
+	emit_signal("destination_set", destination_instance)
 
 func get_random_planet(excluded_planet):
 	var rng = RandomNumberGenerator.new()

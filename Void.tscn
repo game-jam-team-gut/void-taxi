@@ -40,5 +40,6 @@ centered = false
 position = Vector2( 693.649, -1202.72 )
 [connection signal="timeout" from="AsteroidSpawner/SpawnTimer" to="AsteroidSpawner" method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="AsteroidSpawner/AsteroidCountIncrease" to="AsteroidSpawner" method="_on_AsteroidCountIncrease_timeout"]
+[connection signal="destination_set" from="PassengersDestinationsAssigner" to="Taxi" method="_on_PassengersDestinationsAssigner_destination_set"]
 [connection signal="passenger_delivered" from="Taxi" to="PassengersDestinationsAssigner" method="_on_Taxi_passenger_delivered"]
 [connection signal="passenger_pickup" from="Taxi" to="PassengersDestinationsAssigner" method="_on_Taxi_passenger_pickup"]

@@ -28,6 +28,8 @@ var health = 200
 
 var taxi_body_broken = preload("res://Void/Taxi/taxi_body_broken.png")
 
+onready var arrow = get_node("Arrow/arrow")
+
 onready var collision_raycast_forward1 = get_node("RayCast2DForward")
 onready var collision_raycast_forward2 = get_node("RayCast2DForward2")
 onready var collision_raycast_forward3= get_node("RayCast2DForward3")
@@ -160,3 +162,7 @@ func _on_Timer_timeout():
 	money-=RENT
 	if money < 0: #game over
 		get_tree().change_scene("res://GameOver.tscn")
+
+
+func _on_PassengersDestinationsAssigner_destination_set(destination):
+	arrow.set_destination(destination)
