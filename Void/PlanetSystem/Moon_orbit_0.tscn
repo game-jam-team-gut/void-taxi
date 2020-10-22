@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Void/PlanetSystem/Planet.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 574.842, 671.963, 0, 0, 0, 0, 772.502, 401.976, 0, 0, 0, 0, 897.494, 58.4807, 0, 0, 0, 0, 675.365, -594.547, 0, 0, 0, 0, 198.595, -853.249, 0, 0, 0, 0, -187.638, -884.987, 0, 0, 0, 0, -496.735, -804.851, 0, 0, 0, 0, -718.92, -682.291, 0, 0, 0, 0, -865.939, -536.957, 0, 0, 0, 0, -969.094, -249.601, 0, 0, 0, 0, -868.588, 162.216, 0, 0, 0, 0, -571.795, 590.059, 0, 0, 0, 0, -413.465, 731.36, 0, 0, 0, 0, -118.518, 809.46, 0, 0, 0, 0, 457.877, 723.417, 0, 0, 0, 0, 574.842, 671.963 )
+}
+
+[node name="Moon_orbit_0" type="Path2D"]
+curve = SubResource( 1 )
+
+[node name="Planet" parent="." instance=ExtResource( 1 )]
+position = Vector2( 302.453, 640.377 )
+move_speed = 200.0
