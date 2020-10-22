@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Void/background.png" type="Texture" id=1]
+[ext_resource path="res://spaceranger.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Story/Story.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = ExtResource( 2 )
+
+[node name="Story" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 960, 540 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 960.0
+margin_top = 540.0
+margin_right = 960.0
+margin_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 1869.0
+margin_bottom = 1023.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "It is a long, long night. \"Night\" is, of course, 
+how your work shift has been called for hundreds
+of years and today is no different. Wheels have been
+changed for rocket engines, milieu of night lights for
+starry cosmic space and taxi stops have become
+planets light years apart, but all things considered
+one thing has remained the same:
+
+
+there's no better job in the emptiness of the cosmos
+and the rent is not gonna pay itself.
+
+
+You are a void taxi driver 
+and this is 7 days of your life.
+
+
+"
+align = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+margin_left = 960.0
+margin_top = 1340.0
+margin_right = 960.0
+margin_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="VBoxContainer2"]
+margin_right = 142.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="VBoxContainer2/PlayButton" to="." method="_on_PlayButton_pressed"]
