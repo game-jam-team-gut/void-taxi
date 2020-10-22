@@ -27,27 +27,57 @@ var health = 100
 onready var collision_raycast_forward = get_node("RayCast2DForward")
 onready var collision_raycast_backwards = get_node("RayCast2DBackwards")
 
+onready var engine_particles_back_left = get_node("Sprite/taxi_engine_left/EngineParticles2D")
+onready var engine_particles_back_right = get_node("Sprite/taxi_engine_right/EngineParticles2D")
+onready var engine_particles_front_left = get_node("Sprite/taxi_engine_forward_left/EngineParticles2D")
+onready var engine_particles_front_right = get_node("Sprite/taxi_engine_forward_right/EngineParticles2D")
+
 func get_input():
+	var engine_front_left = false
+	var engine_front_right  = false
+	var engine_back_left  = false
+	var engine_back_right = false
+	
 	rotation_dir = 0 #initial rotation direction
 	velocity = Vector2.ZERO
 	
 	if Input.is_action_pressed('ui_right'): #right
 		if(abs(speed) > MIN_SPEED_TO_ROTATE): #rotation is depending on the speed, so you can't turn in place
 			rotation_dir += 1
+			if speed > 0:
+				engine_back_left = true
+			else:
+				engine_front_left = true
 	
 	if Input.is_action_pressed('ui_left'): #left
 		if(abs(speed) > MIN_SPEED_TO_ROTATE): #rotation is depending on the speed, so you can't turn in place
 			rotation_dir -= 1 
+			if speed > 0:
+				engine_back_right = true
+			else:
+				engine_front_right = true
 	
 	if Input.is_action_pressed('ui_up'): #forward
 		if not collision_raycast_forward.is_colliding():
 			speed = int(lerp(speed, MAX_FORWARD_SPEED, FORWARD_ACCELERATION_WEIGHT))
 			velocity = Vector2(speed, 0).rotated(rotation)
+			if not(engine_back_left || engine_back_right):
+				engine_back_left = true
+				engine_back_right = true
+	elif rotation_dir == 0:
+		engine_back_left = false
+		engine_back_right = false
 	
 	if Input.is_action_pressed('ui_down'): #backwards
 		if not collision_raycast_backwards.is_colliding():
 			speed = int(lerp(speed, -MAX_BACKWARDS_SPEED, BACKWARDS_ACCELERATION_WEIGHT))
 			velocity = Vector2(speed, 0).rotated(rotation)
+			if not(engine_front_left || engine_front_right):
+				engine_front_left = true
+				engine_front_right = true
+	elif rotation_dir == 0:
+		engine_front_left = false
+		engine_front_right = false
 	
 	if Input.is_action_pressed('ui_up') == false and Input.is_action_pressed('ui_down') == false: #slowing down after no user input
 		if (speed > 0):
@@ -65,6 +95,12 @@ func get_input():
 			speed = int(-speed * BOUNCE_FACTOR)
 	
 	velocity = Vector2(speed, 0).rotated(rotation)
+	
+	#set engine particles
+	engine_particles_front_left.set_emitting(engine_front_left)
+	engine_particles_front_right.set_emitting(engine_front_right)
+	engine_particles_back_left.set_emitting(engine_back_left)
+	engine_particles_back_right.set_emitting(engine_back_right)
 
 func _physics_process(delta):
 	get_input()
