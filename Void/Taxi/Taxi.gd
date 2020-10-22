@@ -24,9 +24,6 @@ var collision
 var money = 0
 var health = 100
 
-onready var timer=get_node("Timer")
-var day = 0
-
 onready var collision_raycast_forward = get_node("RayCast2DForward")
 onready var collision_raycast_backwards = get_node("RayCast2DBackwards")
 
@@ -76,18 +73,12 @@ func _physics_process(delta):
 	rotation += rotation_dir * ROTATION_FACTOR * delta
 	collision = move_and_collide(velocity * delta) #registering collisions for bounce mechanic
 
-func _ready(): #setting the timer time to 600 seconds (10 minutes) and starting the timer, calling a timeout when it ends
-	timer.set_wait_time(600)
-	timer.start()
-	_on_Timer_timeout()
-
 func check_health():
 	if(health<=0): #game over
 		get_tree().change_scene("res://MainMenu.tscn")
 
 func taxi_UI():
 	$CanvasLayer/HBoxContainer/VBoxContainer/Health.text = "Health: " + var2str(health) + " HP" #current health
-	$CanvasLayer/HBoxContainer/VBoxContainer/Day.text = "Day: #" + var2str(day) #current day
 	$CanvasLayer/HBoxContainer/VBoxContainer/Money.text = "Money: " + var2str(money) + " $" #current money
 	if collision_raycast_forward.is_colliding() || collision_raycast_backwards.is_colliding():
 		$CanvasLayer/HBoxContainer2/VBoxContainer2/Speed.text = "Speed: 0 footballfields/s"
@@ -99,6 +90,3 @@ func emit_pickup_signal(planet):
 
 func emit_passenger_delivered_signal(planet):
 	emit_signal("passenger_delivered", planet)
-
-func _on_Timer_timeout():
-	day+=1
