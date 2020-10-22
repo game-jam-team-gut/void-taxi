@@ -78,8 +78,8 @@ func check_health():
 		get_tree().change_scene("res://MainMenu.tscn")
 
 func taxi_UI():
-	$CanvasLayer/HBoxContainer/VBoxContainer/Health.text = "Health: " + var2str(health) + " HP" #current health
-	$CanvasLayer/HBoxContainer/VBoxContainer/Money.text = "Money: " + var2str(money) + " $" #current money
+	$CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer2/Health.text = "Health: " + var2str(health) + " HP" #current health
+	$CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/Money.text = "Money: " + var2str(money) + " $" #current money
 	if collision_raycast_forward.is_colliding() || collision_raycast_backwards.is_colliding():
 		$CanvasLayer/HBoxContainer2/VBoxContainer2/Speed.text = "Speed: 0 footballfields/s"
 	else:
@@ -90,3 +90,7 @@ func emit_pickup_signal(planet):
 
 func emit_passenger_delivered_signal(planet):
 	emit_signal("passenger_delivered", planet)
+
+
+func _on_Timer_timeout():
+	money-=1000
