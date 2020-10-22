@@ -10,7 +10,7 @@
 [ext_resource path="res://Void/Taxi/BurnManager.gd" type="Script" id=8]
 [ext_resource path="res://Void/Taxi/taxi_engine_right.png" type="Texture" id=9]
 [ext_resource path="res://Void/Taxi/EngineParticles2D.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Void/Taxi/arrow.png" type="Texture" id=11]
+[ext_resource path="res://Void/Taxi/arrow red.png" type="Texture" id=11]
 [ext_resource path="res://Void/Taxi/ArrowPointingToDestination.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -336,12 +336,13 @@ process_material = SubResource( 14 )
 
 [node name="arrow" type="Sprite" parent="Arrow"]
 position = Vector2( 960, 540 )
+scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 11 )
 script = ExtResource( 12 )
-[connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer3" method="_on_Timer_timeout"]
-[connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/Rent" method="_on_Timer_timeout"]
-[connection signal="timeout" from="DayCycleSystem/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="DayCycleSystem/Timer" to="DayCycleSystem" method="_on_Timer_timeout"]
+[connection signal="timeout" from="DayCycleSystem/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/Rent" method="_on_Timer_timeout"]
+[connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer3" method="_on_Timer_timeout"]
 [connection signal="area_entered" from="PassengerDetector" to="PassengerSystem" method="_on_PassengerDetector_area_entered"]
 [connection signal="area_entered" from="BurningDetector" to="BurnManager" method="_on_BurningDetector_area_entered"]
 [connection signal="area_exited" from="BurningDetector" to="BurnManager" method="_on_BurningDetector_area_exited"]
