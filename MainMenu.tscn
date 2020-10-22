@@ -1,12 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://MainMenu/MainMenuNormalFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://MainMenu/MainMenuTitleFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Void/background.png" type="Texture" id=4]
 
 [node name="MainMenu" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -14,6 +13,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 960, 540 )
+texture = ExtResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 960.0
@@ -51,7 +51,7 @@ __meta__ = {
 }
 
 [node name="PlayButton" type="Button" parent="VBoxContainer2"]
-margin_right = 262.0
+margin_right = 215.0
 margin_bottom = 49.0
 custom_fonts/font = ExtResource( 2 )
 text = "Play"
@@ -61,12 +61,12 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2"]
 margin_top = 53.0
-margin_right = 262.0
+margin_right = 215.0
 margin_bottom = 53.0
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer2"]
 margin_top = 57.0
-margin_right = 262.0
+margin_right = 215.0
 margin_bottom = 106.0
 custom_fonts/font = ExtResource( 2 )
 text = "Credits"
@@ -76,12 +76,12 @@ __meta__ = {
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer2"]
 margin_top = 110.0
-margin_right = 262.0
+margin_right = 215.0
 margin_bottom = 110.0
 
 [node name="QuitButton" type="Button" parent="VBoxContainer2"]
 margin_top = 114.0
-margin_right = 262.0
+margin_right = 215.0
 margin_bottom = 163.0
 custom_fonts/font = ExtResource( 2 )
 text = "Quit"
