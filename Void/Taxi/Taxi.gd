@@ -15,6 +15,7 @@ const SLOW_WEIGHT_WHEN_MOVING_FORWARD = 0.003
 const SLOW_WEIGHT_WHEN_MOVING_BACKWARDS = 0.003
 const BOUNCE_FACTOR = 0.5
 const DESTRUCTION_FACTOR = 75
+const RENT = 4000
 
 var speed = INITIAL_SPEED
 
@@ -23,7 +24,9 @@ var rotation_dir
 var collision
 
 var money = 0
-var health = 100
+var health = 200
+
+var taxi_body_broken = preload("res://Void/Taxi/taxi_body_broken.png")
 
 onready var collision_raycast_forward1 = get_node("RayCast2DForward")
 onready var collision_raycast_forward2 = get_node("RayCast2DForward2")
@@ -31,12 +34,10 @@ onready var collision_raycast_forward3= get_node("RayCast2DForward3")
 onready var collision_raycast_backwards1 = get_node("RayCast2DBackwards")
 onready var collision_raycast_backwards2 = get_node("RayCast2DBackwards2")
 onready var collision_raycast_backwards3 = get_node("RayCast2DBackwards3")
-
 onready var engine_particles_back_left = get_node("Sprite/taxi_engine_left/EngineParticles2D")
 onready var engine_particles_back_right = get_node("Sprite/taxi_engine_right/EngineParticles2D")
 onready var engine_particles_front_left = get_node("Sprite/taxi_engine_forward_left/EngineParticles2D")
 onready var engine_particles_front_right = get_node("Sprite/taxi_engine_forward_right/EngineParticles2D")
-
 
 func get_input():
 	var engine_front_left = false
@@ -95,8 +96,7 @@ func get_input():
 			speed = int(lerp(speed, 0, SLOW_WEIGHT_WHEN_MOVING_BACKWARDS))
 	
 	if Input.is_action_pressed('ui_cancel'):
-		get_tree().quit()
-		
+		get_tree().change_scene("res://MainMenu.tscn")
 	
 	check_collisions()
 	
@@ -137,8 +137,10 @@ func _physics_process(delta):
 
 func take_damage(damage):
 	health -= damage
+	if(health <= 100):
+		get_node("Sprite").set_texture(taxi_body_broken)
 	if(health <= 0): #game over
-		get_tree().change_scene("res://MainMenu.tscn")
+		get_tree().change_scene("res://GameOver.tscn")
 
 func taxi_UI():
 	$CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer2/Health.text = "Health: " + var2str(health) + " HP" #current health
@@ -155,4 +157,6 @@ func emit_passenger_delivered_signal(planet):
 	emit_signal("passenger_delivered", planet)
 
 func _on_Timer_timeout():
-	money-=1000
+	money-=RENT
+	if money < 0: #game over
+		get_tree().change_scene("res://GameOver.tscn")
