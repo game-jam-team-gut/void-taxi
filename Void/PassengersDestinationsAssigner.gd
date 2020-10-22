@@ -56,7 +56,7 @@ func get_random_planet(excluded_planet):
 #	pass
 
 func calculate_approximately_planet_radius(planet):
-	var planet_size = planet.get_node("Sprite").texture.get_size()
+	var planet_size = planet.get_node("Sprite").texture.get_size() * planet.get_node("Sprite").scale
 	return sqrt(pow(planet_size.x,2) + pow(planet_size.y,2))/5
 
 func _on_Taxi_passenger_pickup(planet):
