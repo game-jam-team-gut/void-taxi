@@ -1,6 +1,6 @@
 extends Node
 
-const DAY_LENGTH = 515 #515 for 7 days in 1 hour
+const DAY_LENGTH = 120 #new day every 2 minutes
 
 var day = 0
 
@@ -23,7 +23,7 @@ func update_daycycle_UI():
 func update_daysummary_UI():
 	if day>1:
 		daysummary_label.text = "New day has come!"
-		rent_label.text = " -1000$"
+		rent_label.text = " -" + var2str(get_parent().RENT)
 
 func _process(delta):
 	update_daycycle_UI()
