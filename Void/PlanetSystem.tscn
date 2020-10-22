@@ -5,26 +5,26 @@
 [ext_resource path="res://Void/PlanetSystem/Moon1.png" type="Texture" id=4]
 [ext_resource path="res://Void/PlanetSystem/burning_zone.png" type="Texture" id=5]
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=1]
 radius = 1385.32
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=2]
 radius = 1050.34
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=3]
 radius = 825.249
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=4]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 4868.54, 562.696, 0, 0, 0, 0, 4398.15, 585.859, 206.766, -173.804, -206.766, 173.804, 3814.12, 889.316, 110.875, -470.468, -110.875, 470.468, 3320.24, 1562.79, 33.9028, -457.688, -33.9028, 457.688, 3219.05, 2081.44, 0, 0, 0, 0, 3194.52, 2568.52, 0, 0, 0, 0, 3490.85, 3592.21, 0, 0, 0, 0, 4137.39, 4220.78, 0, 0, 0, 0, 5071.28, 4517.11, 0, 0, 0, 0, 7163.55, 4247.72, 0, 0, 0, 0, 7926.82, 3367.71, 0, 0, 0, 0, 7926.82, 2595.46, 0, 0, 0, 0, 7361.1, 1706.47, 0, 0, 0, 0, 6606.81, 1266.46, 0, 0, 0, 0, 5987.21, 862.377, 0, 0, 0, 0, 5295.77, 655.844, 0, 0, 0, 0, 4868.54, 562.696 )
 }
 
-[sub_resource type="Curve2D" id=2]
+[sub_resource type="Curve2D" id=5]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 302.453, 640.377, 0, 0, 0, 0, 475.692, 525.863, 0, 0, 0, 0, 593.936, 451.07, 0, 0, 0, 0, 687.678, 348.366, 0, 0, 0, 0, 768.049, 232.645, 0, 0, 0, 0, 783.602, 89.1492, 0, 0, 0, 0, 766.69, -170.506, 0, 0, 0, 0, 668.241, -368.411, 0, 0, 0, 0, 507.52, -637.271, 0, 0, 0, 0, 311.678, -752.991, 0, 0, 0, 0, 107.642, -788.499, 0, 0, 0, 0, -80.5058, -802.008, 0, 0, 0, 0, -354.631, -749.743, 0, 0, 0, 0, -551.494, -672.458, 0, 0, 0, 0, -743.581, -494.599, 0, 0, 0, 0, -814.988, -254.111, 0, 0, 0, 0, -848.606, -98.8348, 0, 0, 0, 0, -837.638, 43.1343, 0, 0, 0, 0, -779.037, 276.3, 0, 0, 0, 0, -711.748, 373.728, 0, 0, 0, 0, -620.754, 518.379, 0, 0, 0, 0, -501.656, 580.313, 0, 0, 0, 0, -355.41, 619.554, 0, 0, 0, 0, -218.069, 636.331, 0, 0, 0, 0, 36.8341, 664.905, 0, 0, 0, 0, 286.01, 647.141, 0, 0, 0, 0, 302.453, 640.377 )
 }
 
-[sub_resource type="Curve2D" id=3]
+[sub_resource type="Curve2D" id=6]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -611.951, -3570.83, 0, 0, 0, 0, 457.799, -3499.5, 0, 0, 0, 0, 1546.37, -2975.37, 0, 0, 0, 0, 2393.04, -2491.56, 0, 0, 0, 0, 3400.97, -1745.69, 0, 0, 0, 0, 4146.85, -1120.77, 0, 0, 0, 0, 4731.45, -233.785, 0, 0, 0, 0, 5013.67, 532.247, 0, 0, 0, 0, 4711.29, 1640.98, 0, 0, 0, 0, 4293.34, 2121.9, 0, 0, 0, 0, 3607.17, 2821.53, 0, 0, 0, 0, 2719.19, 3117.52, 0, 0, 0, 0, 1400.66, 3265.52, 0, 0, 0, 0, 660.673, 3413.52, 0, 0, 0, 0, -92.7705, 3359.7, 0, 0, 0, 0, -940.395, 3130.98, 0, 0, 0, 0, -1761.11, 2727.35, 0, 0, 0, 0, -2339.65, 2256.44, 0, 0, 0, 0, -2807.92, 1761.93, 0, 0, 0, 0, -3352.2, 1237.8, 0, 0, 0, 0, -3836.01, 290.342, 0, 0, 0, 0, -3856.17, -818.389, 0, 0, 0, 0, -3735.22, -1362.67, 0, 0, 0, 0, -3553.79, -1806.17, 0, 0, 0, 0, -3090.14, -2209.34, 0, 0, 0, 0, -2666.8, -2531.88, 0, 0, 0, 0, -2102.36, -2834.26, 0, 0, 0, 0, -1437.12, -3176.96, 0, 0, 0, 0, -771.885, -3559.98, 0, 0, 0, 0, -669.097, -3574, 0, 0, 0, 0, -611.951, -3570.83 )
 }
@@ -49,7 +49,7 @@ z_index = 4
 texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="burning_zone_1"]
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 
 [node name="burning_zone_2" type="Area2D" parent="."]
 collision_layer = 131072
@@ -63,23 +63,25 @@ z_index = 4
 texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="burning_zone_2"]
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
-[node name="burning_zone_3" type="Area2D" parent="."]
+[node name="burning_zone_3" type="Area2D" parent="." groups=[
+"BurningZone3",
+]]
 collision_layer = 131072
 collision_mask = 131072
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="burning_zone_3"]
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="Planet_orbit_0" type="Path2D" parent="."]
 position = Vector2( -5335.08, -2648.93 )
-curve = SubResource( 1 )
+curve = SubResource( 4 )
 
 [node name="Planet" parent="Planet_orbit_0" instance=ExtResource( 2 )]
 
 [node name="Moon_orbit_0" type="Path2D" parent="Planet_orbit_0/Planet"]
-curve = SubResource( 2 )
+curve = SubResource( 5 )
 
 [node name="Planet" parent="Planet_orbit_0/Planet/Moon_orbit_0" instance=ExtResource( 2 )]
 position = Vector2( 302.453, 640.377 )
@@ -90,7 +92,7 @@ scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 4 )
 
 [node name="Planet_orbit_1" type="Path2D" parent="."]
-curve = SubResource( 3 )
+curve = SubResource( 6 )
 
 [node name="Planet" parent="Planet_orbit_1" instance=ExtResource( 2 )]
 position = Vector2( -611.951, -3570.83 )
