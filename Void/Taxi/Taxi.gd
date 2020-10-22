@@ -7,6 +7,7 @@ const INITIAL_SPEED = 0
 const ROTATION_FACTOR = 1.2
 const MIN_SPEED_TO_ROTATE = 100
 const MAX_FORWARD_SPEED = 4400
+const MAX_TURNING_SPEED = 2200
 const MAX_BACKWARDS_SPEED = 2200
 const FORWARD_ACCELERATION_WEIGHT = 0.004
 const BACKWARDS_ACCELERATION_WEIGHT = 0.0031
@@ -59,7 +60,10 @@ func get_input():
 	
 	if Input.is_action_pressed('ui_up'): #forward
 		if not collision_raycast_forward.is_colliding():
-			speed = int(lerp(speed, MAX_FORWARD_SPEED, FORWARD_ACCELERATION_WEIGHT))
+			if rotation_dir == 0:
+				speed = int(lerp(speed, MAX_FORWARD_SPEED, FORWARD_ACCELERATION_WEIGHT))
+			else:
+				speed = int(lerp(speed, MAX_TURNING_SPEED, FORWARD_ACCELERATION_WEIGHT))
 			velocity = Vector2(speed, 0).rotated(rotation)
 			if not(engine_back_left || engine_back_right):
 				engine_back_left = true
