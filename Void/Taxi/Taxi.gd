@@ -96,8 +96,7 @@ func get_input():
 			speed = int(lerp(speed, 0, SLOW_WEIGHT_WHEN_MOVING_BACKWARDS))
 	
 	if Input.is_action_pressed('ui_cancel'):
-		get_tree().quit()
-		
+		get_tree().change_scene("res://MainMenu.tscn")
 	
 	check_collisions()
 	
@@ -141,7 +140,7 @@ func take_damage(damage):
 	if(health <= 100):
 		get_node("Sprite").set_texture(taxi_body_broken)
 	if(health <= 0): #game over
-		get_tree().change_scene("res://MainMenu.tscn")
+		get_tree().change_scene("res://GameOver.tscn")
 
 func taxi_UI():
 	$CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer2/Health.text = "Health: " + var2str(health) + " HP" #current health
@@ -160,4 +159,4 @@ func emit_passenger_delivered_signal(planet):
 func _on_Timer_timeout():
 	money-=RENT
 	if money < 0: #game over
-		get_tree().change_scene("res://MainMenu.tscn")
+		get_tree().change_scene("res://GameOver.tscn")
