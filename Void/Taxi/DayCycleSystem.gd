@@ -17,7 +17,7 @@ func _ready():
 func _on_Timer_timeout():
 	day+=1
 	if day > 7:
-		get_tree().quit()
+		get_tree().change_scene("res://WinCredits.tscn")
 
 func update_daycycle_UI():
 	daycycle_label.text = "Stellar day: #" + var2str(day)
