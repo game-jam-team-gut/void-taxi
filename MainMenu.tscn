@@ -5,75 +5,88 @@
 [ext_resource path="res://MainMenu/MainMenuTitleFont.tres" type="DynamicFont" id=3]
 
 [node name="MainMenu" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-margin_left = 147.555
-margin_top = 109.293
-margin_right = 630.555
-margin_bottom = 198.293
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+texture = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 960.0
+margin_top = 540.0
+margin_right = 960.0
+margin_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 1160.0
+margin_bottom = 213.0
 custom_fonts/font = ExtResource( 3 )
 text = "Void taxi"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -67.5
-margin_top = -57.5
-margin_right = 67.5
-margin_bottom = 57.5
+margin_left = 960.0
+margin_top = 1240.0
+margin_right = 960.0
+margin_bottom = 340.0
+grow_horizontal = 2
+grow_vertical = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
-margin_right = 135.0
-margin_bottom = 33.0
+[node name="PlayButton" type="Button" parent="VBoxContainer2"]
+margin_right = 262.0
+margin_bottom = 49.0
 custom_fonts/font = ExtResource( 2 )
 text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 37.0
-margin_right = 135.0
-margin_bottom = 37.0
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2"]
+margin_top = 53.0
+margin_right = 262.0
+margin_bottom = 53.0
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
-margin_top = 41.0
-margin_right = 135.0
-margin_bottom = 74.0
+[node name="CreditsButton" type="Button" parent="VBoxContainer2"]
+margin_top = 57.0
+margin_right = 262.0
+margin_bottom = 106.0
 custom_fonts/font = ExtResource( 2 )
 text = "Credits"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 78.0
-margin_right = 135.0
-margin_bottom = 78.0
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer2"]
+margin_top = 110.0
+margin_right = 262.0
+margin_bottom = 110.0
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
-margin_top = 82.0
-margin_right = 135.0
-margin_bottom = 115.0
+[node name="QuitButton" type="Button" parent="VBoxContainer2"]
+margin_top = 114.0
+margin_right = 262.0
+margin_bottom = 163.0
 custom_fonts/font = ExtResource( 2 )
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="VBoxContainer2/PlayButton" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="VBoxContainer2/QuitButton" to="." method="_on_QuitButton_pressed"]
