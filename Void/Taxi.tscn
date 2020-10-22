@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Void/Taxi/void-taxi.png" type="Texture" id=1]
 [ext_resource path="res://Void/Taxi/Taxi.gd" type="Script" id=2]
@@ -7,52 +7,91 @@
 [ext_resource path="res://spaceranger.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Void/HBoxContainer3.gd" type="Script" id=6]
 [ext_resource path="res://Void/Rent.gd" type="Script" id=7]
+[ext_resource path="res://Void/Taxi/BurnManager.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 123.715, 54.7674 )
 
 [sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 118.516, 49.5486 )
+
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 127.011, 57.3468 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 48
 outline_size = 4
 outline_color = Color( 0.968627, 1, 0, 0.196078 )
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 48
 outline_size = 4
 outline_color = Color( 1, 0, 0, 0.196078 )
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 48
 outline_size = 4
 outline_color = Color( 0.129412, 0.423529, 0.164706, 0.352941 )
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=7]
 size = 48
 outline_size = 4
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=8]
 size = 48
 outline_size = 4
 outline_color = Color( 0.392157, 0.0235294, 0.4, 0.352941 )
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=9]
 size = 48
 outline_size = 4
 outline_color = Color( 0, 0.0392157, 0.501961, 0.352941 )
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=10]
 size = 96
 outline_size = 8
 font_data = ExtResource( 5 )
+
+[sub_resource type="Gradient" id=12]
+colors = PoolColorArray( 0.728027, 0.728027, 0.728027, 1, 0.00537109, 0.00537109, 0.00537109, 1 )
+
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
+
+[sub_resource type="Curve" id=14]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.527273 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=15]
+curve = SubResource( 14 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+lifetime_randomness = 0.56
+emission_shape = 2
+emission_box_extents = Vector3( 100, 50, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+initial_velocity_random = 0.69
+angular_velocity = 10.0
+angular_velocity_random = 0.57
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 5.0
+linear_accel_random = 0.7
+damping = 1.0
+angle = 90.0
+scale = 5.0
+scale_random = 0.31
+scale_curve = SubResource( 15 )
+color_ramp = SubResource( 13 )
 
 [node name="Taxi" type="KinematicBody2D"]
 position = Vector2( 960, 540 )
@@ -73,6 +112,13 @@ collision_mask = 262144
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PassengerDetector"]
 shape = SubResource( 1 )
 
+[node name="BurningDetector" type="Area2D" parent="."]
+collision_layer = 131072
+collision_mask = 131072
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BurningDetector"]
+shape = SubResource( 2 )
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
@@ -80,7 +126,7 @@ texture = ExtResource( 1 )
 current = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -107,7 +153,7 @@ __meta__ = {
 
 [node name="Day" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer"]
 margin_bottom = 43.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.913725, 0.780392, 0.0509804, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -123,7 +169,7 @@ __meta__ = {
 
 [node name="Health" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 margin_bottom = 43.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.713726, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -139,7 +185,7 @@ __meta__ = {
 
 [node name="Money" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 margin_bottom = 43.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.129412, 0.619608, 0.164706, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -149,7 +195,7 @@ __meta__ = {
 margin_left = 4.0
 margin_right = 4.0
 margin_bottom = 43.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 script = ExtResource( 7 )
 
@@ -171,7 +217,7 @@ __meta__ = {
 
 [node name="Passengers" type="Label" parent="CanvasLayer/HBoxContainer2/VBoxContainer2"]
 margin_bottom = 43.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.627451, 0.0392157, 0.807843, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -180,7 +226,7 @@ __meta__ = {
 [node name="Speed" type="Label" parent="CanvasLayer/HBoxContainer2/VBoxContainer2"]
 margin_top = 47.0
 margin_bottom = 90.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0, 0.392157, 0.501961, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -204,7 +250,7 @@ margin_bottom = 400.0
 
 [node name="NewDay" type="Label" parent="CanvasLayer/HBoxContainer3/VBoxContainer3"]
 margin_bottom = 86.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Tween" type="Tween" parent="CanvasLayer/HBoxContainer3"]
@@ -218,8 +264,24 @@ cast_to = Vector2( 130, 0 )
 scale = Vector2( 1, 10 )
 enabled = true
 cast_to = Vector2( -130, 0 )
-[connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer3" method="_on_Timer_timeout"]
-[connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/Rent" method="_on_Timer_timeout"]
-[connection signal="timeout" from="DayCycleSystem/Timer" to="." method="_on_Timer_timeout"]
+
+[node name="BurnManager" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="BurnTimer" type="Timer" parent="BurnManager"]
+wait_time = 0.2
+
+[node name="Particles2D" type="Particles2D" parent="BurnManager"]
+emitting = false
+amount = 200
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 11 )
 [connection signal="timeout" from="DayCycleSystem/Timer" to="DayCycleSystem" method="_on_Timer_timeout"]
+[connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer3" method="_on_Timer_timeout"]
+[connection signal="timeout" from="DayCycleSystem/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/Rent" method="_on_Timer_timeout"]
 [connection signal="area_entered" from="PassengerDetector" to="PassengerSystem" method="_on_PassengerDetector_area_entered"]
+[connection signal="area_entered" from="BurningDetector" to="BurnManager" method="_on_BurningDetector_area_entered"]
+[connection signal="area_exited" from="BurningDetector" to="BurnManager" method="_on_BurningDetector_area_exited"]
+[connection signal="timeout" from="BurnManager/BurnTimer" to="BurnManager" method="_on_BurnTimer_timeout"]

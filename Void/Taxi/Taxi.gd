@@ -60,21 +60,21 @@ func get_input():
 	
 	if collision: #bounce mechanic
 		if abs(speed) > 50:
-			health=int(health-abs(speed)/DESTRUCTION_FACTOR)
+			take_damage(int(abs(speed)/DESTRUCTION_FACTOR))
 		if abs(speed) > 30:
 			speed = int(-speed * BOUNCE_FACTOR)
 	
 	velocity = Vector2(speed, 0).rotated(rotation)
 
 func _physics_process(delta):
-	check_health()
 	get_input()
 	taxi_UI()
 	rotation += rotation_dir * ROTATION_FACTOR * delta
 	collision = move_and_collide(velocity * delta) #registering collisions for bounce mechanic
 
-func check_health():
-	if(health<=0): #game over
+func take_damage(damage):
+	health -= damage
+	if(health <= 0): #game over
 		get_tree().change_scene("res://MainMenu.tscn")
 
 func taxi_UI():
