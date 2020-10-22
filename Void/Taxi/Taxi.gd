@@ -25,13 +25,18 @@ var collision
 var money = 0
 var health = 100
 
-onready var collision_raycast_forward = get_node("RayCast2DForward")
-onready var collision_raycast_backwards = get_node("RayCast2DBackwards")
+onready var collision_raycast_forward1 = get_node("RayCast2DForward")
+onready var collision_raycast_forward2 = get_node("RayCast2DForward2")
+onready var collision_raycast_forward3= get_node("RayCast2DForward3")
+onready var collision_raycast_backwards1 = get_node("RayCast2DBackwards")
+onready var collision_raycast_backwards2 = get_node("RayCast2DBackwards2")
+onready var collision_raycast_backwards3 = get_node("RayCast2DBackwards3")
 
 onready var engine_particles_back_left = get_node("Sprite/taxi_engine_left/EngineParticles2D")
 onready var engine_particles_back_right = get_node("Sprite/taxi_engine_right/EngineParticles2D")
 onready var engine_particles_front_left = get_node("Sprite/taxi_engine_forward_left/EngineParticles2D")
 onready var engine_particles_front_right = get_node("Sprite/taxi_engine_forward_right/EngineParticles2D")
+
 
 func get_input():
 	var engine_front_left = false
@@ -59,7 +64,7 @@ func get_input():
 				engine_front_right = true
 	
 	if Input.is_action_pressed('ui_up'): #forward
-		if not collision_raycast_forward.is_colliding():
+		if not collision_raycast_forward1.is_colliding():
 			if rotation_dir == 0:
 				speed = int(lerp(speed, MAX_FORWARD_SPEED, FORWARD_ACCELERATION_WEIGHT))
 			else:
@@ -73,7 +78,7 @@ func get_input():
 		engine_back_right = false
 	
 	if Input.is_action_pressed('ui_down'): #backwards
-		if not collision_raycast_backwards.is_colliding():
+		if not collision_raycast_backwards1.is_colliding():
 			speed = int(lerp(speed, -MAX_BACKWARDS_SPEED, BACKWARDS_ACCELERATION_WEIGHT))
 			velocity = Vector2(speed, 0).rotated(rotation)
 			if not(engine_front_left || engine_front_right):
@@ -91,12 +96,9 @@ func get_input():
 	
 	if Input.is_action_pressed('ui_cancel'):
 		get_tree().quit()
+		
 	
-	if collision: #bounce mechanic
-		if abs(speed) > 50:
-			take_damage(int(abs(speed)/DESTRUCTION_FACTOR))
-		if abs(speed) > 30:
-			speed = int(-speed * BOUNCE_FACTOR)
+	check_collisions()
 	
 	velocity = Vector2(speed, 0).rotated(rotation)
 	
@@ -105,6 +107,27 @@ func get_input():
 	engine_particles_front_right.set_emitting(engine_front_right)
 	engine_particles_back_left.set_emitting(engine_back_left)
 	engine_particles_back_right.set_emitting(engine_back_right)
+
+func check_collisions():
+	if collision: #bounce mechanic
+		collide_with_object()
+	check_raycast_asteroid_collision(collision_raycast_backwards1)
+	check_raycast_asteroid_collision(collision_raycast_backwards2)
+	check_raycast_asteroid_collision(collision_raycast_backwards3)
+	check_raycast_asteroid_collision(collision_raycast_forward1)
+	check_raycast_asteroid_collision(collision_raycast_forward2)
+	check_raycast_asteroid_collision(collision_raycast_forward3)
+
+func check_raycast_asteroid_collision(raycast):
+	if raycast.is_colliding():
+		if raycast.get_collider().is_in_group("Asteroid"):
+			collide_with_object()
+
+func collide_with_object():
+	if abs(speed) > 50:
+		take_damage(int(abs(speed)/DESTRUCTION_FACTOR))
+	if abs(speed) > 30:
+		speed = int(-speed * BOUNCE_FACTOR)
 
 func _physics_process(delta):
 	get_input()
@@ -120,7 +143,7 @@ func take_damage(damage):
 func taxi_UI():
 	$CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer2/Health.text = "Health: " + var2str(health) + " HP" #current health
 	$CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/Money.text = "Money: " + var2str(money) + " $" #current money
-	if collision_raycast_forward.is_colliding() || collision_raycast_backwards.is_colliding():
+	if collision_raycast_forward1.is_colliding() || collision_raycast_backwards1.is_colliding():
 		$CanvasLayer/HBoxContainer2/VBoxContainer2/Speed.text = "Speed: 0 footballfields/s"
 	else:
 		$CanvasLayer/HBoxContainer2/VBoxContainer2/Speed.text = "Speed: " + var2str(abs(speed)) + " footballfields/s"
@@ -130,7 +153,6 @@ func emit_pickup_signal(planet):
 
 func emit_passenger_delivered_signal(planet):
 	emit_signal("passenger_delivered", planet)
-
 
 func _on_Timer_timeout():
 	money-=1000

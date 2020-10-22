@@ -290,14 +290,32 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 [node name="Tween" type="Tween" parent="CanvasLayer/HBoxContainer3"]
 
 [node name="RayCast2DForward" type="RayCast2D" parent="."]
-scale = Vector2( 1, 10 )
 enabled = true
-cast_to = Vector2( 120, 0 )
+cast_to = Vector2( 125, 0 )
+
+[node name="RayCast2DForward2" type="RayCast2D" parent="."]
+position = Vector2( 0, -59.7505 )
+enabled = true
+cast_to = Vector2( 125, 0 )
+
+[node name="RayCast2DForward3" type="RayCast2D" parent="."]
+position = Vector2( 0, 57.9828 )
+enabled = true
+cast_to = Vector2( 125, 0 )
 
 [node name="RayCast2DBackwards" type="RayCast2D" parent="."]
-scale = Vector2( 1, 10 )
 enabled = true
-cast_to = Vector2( -122, 0 )
+cast_to = Vector2( -125, 0 )
+
+[node name="RayCast2DBackwards2" type="RayCast2D" parent="."]
+position = Vector2( 0, 57.9828 )
+enabled = true
+cast_to = Vector2( -125, 0 )
+
+[node name="RayCast2DBackwards3" type="RayCast2D" parent="."]
+position = Vector2( 0, -59.3969 )
+enabled = true
+cast_to = Vector2( -125, 0 )
 
 [node name="BurnManager" type="Node2D" parent="."]
 script = ExtResource( 8 )
@@ -313,8 +331,8 @@ local_coords = false
 process_material = SubResource( 14 )
 [connection signal="timeout" from="DayCycleSystem/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer3" method="_on_Timer_timeout"]
-[connection signal="timeout" from="DayCycleSystem/Timer" to="DayCycleSystem" method="_on_Timer_timeout"]
 [connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/Rent" method="_on_Timer_timeout"]
+[connection signal="timeout" from="DayCycleSystem/Timer" to="DayCycleSystem" method="_on_Timer_timeout"]
 [connection signal="area_entered" from="PassengerDetector" to="PassengerSystem" method="_on_PassengerDetector_area_entered"]
 [connection signal="area_entered" from="BurningDetector" to="BurnManager" method="_on_BurningDetector_area_entered"]
 [connection signal="area_exited" from="BurningDetector" to="BurnManager" method="_on_BurningDetector_area_exited"]
