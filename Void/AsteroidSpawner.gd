@@ -1,7 +1,7 @@
 extends Node
 
-var MAX_ASTEROID_COUNT = 80
-var MAX_ASTEROID_DISTANCE = 20000
+var MAX_ASTEROID_COUNT = 200
+var MAX_ASTEROID_DISTANCE = 200000
 
 onready var asteroid1 = preload("res://Void/Asteroids/Asteroid1.tscn")
 onready var asteroid2 = preload("res://Void/Asteroids/Asteroid2.tscn")
@@ -21,7 +21,7 @@ var asteroids_initial_aims = []
 
 
 func _ready():
-	current_max_asteroid_count = 20
+	current_max_asteroid_count = 100
 	minimum_asteroid_distance = Vector2(1920 * 4, 1080 * 4)
 	asteroids_initial_aims = get_tree().get_nodes_in_group("Asteroid_aims")
 	asteroids_initial_aims = asteroids_initial_aims +  get_tree().get_nodes_in_group("Planet")
@@ -55,8 +55,8 @@ func generate_starting_asteroids():
 		var y_delta = rng.randf_range(-1,1)
 		rng.randomize()
 		var x_delta = rng.randf_range(-1,1)
-		asteroid_instance.position = Vector2(sun_system_center.x + minimum_asteroid_distance.x * x_delta, 
-											sun_system_center.y + minimum_asteroid_distance.y * y_delta)
+		asteroid_instance.position = Vector2(sun_system_center.x + MAX_ASTEROID_DISTANCE/10 * x_delta, 
+											sun_system_center.y + MAX_ASTEROID_DISTANCE/10 * y_delta)
 		
 		rng.randomize()
 		var initial_force = rng.randf_range(0,150)
@@ -96,23 +96,23 @@ func _on_SpawnTimer_timeout():
 			1: #left
 				rng.randomize()
 				var y_delta = rng.randf_range(-1,1)
-				asteroid_instance.position = Vector2(screen_center_in_world.x - minimum_asteroid_distance.x, 
-													screen_center_in_world.y + minimum_asteroid_distance.y * y_delta)
+				asteroid_instance.position = Vector2(screen_center_in_world.x - MAX_ASTEROID_DISTANCE, 
+													screen_center_in_world.y + MAX_ASTEROID_DISTANCE * y_delta)
 			2: #up
 				rng.randomize()
 				var y_delta = rng.randf_range(-1,1)
-				asteroid_instance.position = Vector2(screen_center_in_world.x + minimum_asteroid_distance.x * y_delta, 
-													screen_center_in_world.y - minimum_asteroid_distance.y )
+				asteroid_instance.position = Vector2(screen_center_in_world.x + MAX_ASTEROID_DISTANCE * y_delta, 
+													screen_center_in_world.y - MAX_ASTEROID_DISTANCE )
 			3: #down
 				rng.randomize()
 				var y_delta = rng.randf_range(-1,1)
-				asteroid_instance.position = Vector2(screen_center_in_world.x + minimum_asteroid_distance.x * y_delta, 
-													screen_center_in_world.y + minimum_asteroid_distance.y )
+				asteroid_instance.position = Vector2(screen_center_in_world.x + MAX_ASTEROID_DISTANCE * y_delta, 
+													screen_center_in_world.y + MAX_ASTEROID_DISTANCE )
 			4: #right
 				rng.randomize()
 				var y_delta = rng.randf_range(-1,1)
-				asteroid_instance.position = Vector2(screen_center_in_world.x + minimum_asteroid_distance.x, 
-													screen_center_in_world.y + minimum_asteroid_distance.y * y_delta)
+				asteroid_instance.position = Vector2(screen_center_in_world.x + MAX_ASTEROID_DISTANCE, 
+													screen_center_in_world.y + MAX_ASTEROID_DISTANCE * y_delta)
 		
 		rng.randomize()
 		var initial_force = rng.randf_range(0,100 + 100 * (float(current_max_asteroid_count)/float(MAX_ASTEROID_COUNT)))
