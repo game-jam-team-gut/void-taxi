@@ -1,13 +1,21 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Void/Taxi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Void/PlanetSystem.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Void/testbg.png" type="Texture" id=3]
 [ext_resource path="res://Void/theme.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Void/bg2.png" type="Texture" id=5]
 [ext_resource path="res://Void/PassengersDestinationsAssigner.gd" type="Script" id=7]
 [ext_resource path="res://Void/AsteroidSpawner.gd" type="Script" id=10]
 
 [node name="Void" type="Node2D"]
+
+[node name="bg2" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 4163.62, 1297.43 )
+rotation = 1.5708
+scale = Vector2( 30, 40 )
+texture = ExtResource( 5 )
 
 [node name="AsteroidSpawner" type="Node" parent="."]
 script = ExtResource( 10 )

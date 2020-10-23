@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Void/PlanetSystem/Sun1.png" type="Texture" id=1]
 [ext_resource path="res://Void/PlanetSystem/Planet.tscn" type="PackedScene" id=2]
@@ -10,6 +10,13 @@
 [ext_resource path="res://Void/PlanetSystem/planetB4.png" type="Texture" id=8]
 [ext_resource path="res://Void/PlanetSystem/Moon3.png" type="Texture" id=9]
 [ext_resource path="res://Void/PlanetSystem/Moon2.png" type="Texture" id=10]
+[ext_resource path="res://Void/PlanetSystem/iceAsteroid2.png" type="Texture" id=11]
+[ext_resource path="res://Void/PlanetSystem/iceAsteroid1.png" type="Texture" id=12]
+[ext_resource path="res://Void/PlanetSystem/iceAsteroid3.png" type="Texture" id=13]
+[ext_resource path="res://Void/PlanetSystem/iceAsteroid4.png" type="Texture" id=14]
+[ext_resource path="res://Void/PlanetSystem/iceAsteroid5.png" type="Texture" id=15]
+[ext_resource path="res://Void/PlanetSystem/Planet.gd" type="Script" id=16]
+[ext_resource path="res://Void/PlanetSystem/iceplanet2.png" type="Texture" id=17]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 1385.32
@@ -25,34 +32,39 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 4868.54, 562.696, 0, 0, 0, 0, 4398.15, 585.859, 206.766, -173.804, -206.766, 173.804, 3814.12, 889.316, 110.875, -470.468, -110.875, 470.468, 3320.24, 1562.79, 33.9028, -457.688, -33.9028, 457.688, 3219.05, 2081.44, 0, 0, 0, 0, 3194.52, 2568.52, 0, 0, 0, 0, 3490.85, 3592.21, 0, 0, 0, 0, 4137.39, 4220.78, 0, 0, 0, 0, 5071.28, 4517.11, 0, 0, 0, 0, 6323.29, 4641.56, 0, 0, 0, 0, 7228.43, 4393.23, 0, 0, 0, 0, 7926.82, 3367.71, 0, 0, 0, 0, 7926.82, 2595.46, 0, 0, 0, 0, 7361.1, 1706.47, 0, 0, 0, 0, 6606.81, 1266.46, 0, 0, 0, 0, 5987.21, 862.377, 0, 0, 0, 0, 5295.77, 655.844, 0, 0, 0, 0, 4868.54, 562.696 )
 }
 
-[sub_resource type="Curve2D" id=6]
+[sub_resource type="Curve2D" id=5]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 371.417, -3858.04, 0, 0, 0, 0, 1499.39, -3420.02, 0, 0, 0, 0, 2368.91, -3149.19, 0, 0, 0, 0, 3366.71, -2450.72, 0, 0, 0, 0, 4307.5, -1937.56, 0, 0, 0, 0, 5219.78, -911.248, 0, 0, 0, 0, 5535.92, 227.754, 0, 0, 0, 0, 5630.1, 1492.46, 0, 0, 0, 0, 5307.2, 2245.91, 0, 0, 0, 0, 4634.48, 3281.89, 0, 0, 0, 0, 3490.86, 3752.79, 0, 0, 0, 0, 2076.94, 3863.04, 0, 0, 0, 0, 1034.12, 3863.04, 0, 0, 0, 0, 135.135, 3899, 0, 0, 0, 0, -643.984, 3910.99, 0, 0, 0, 0, -1231.32, 3599.34, 0, 0, 0, 0, -1686.81, 3443.52, 0, 0, 0, 0, -2477.91, 2976.04, 0, 0, 0, 0, -2993.33, 2640.42, 0, 0, 0, 0, -3664.57, 2077.06, 0, 0, 0, 0, -4215.95, 854.441, 0, 0, 0, 0, -4239.92, -296.258, 0, 0, 0, 0, -4203.96, -1207.23, 0, 0, 0, 0, -3978.06, -1730.92, 0, 0, 0, 0, -3641.53, -2416.68, 0, 0, 0, 0, -3133.56, -2721.46, 0, 0, 0, 0, -2625.6, -3134.18, 0, 0, 0, 0, -2136.68, -3394.52, 0, 0, 0, 0, -1577.91, -3616.75, 0, 0, 0, 0, -708.016, -3991.38, 0, 0, 0, 0, -98.4536, -3965.98 )
 }
 
-[sub_resource type="Curve2D" id=7]
+[sub_resource type="Curve2D" id=6]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 858.586, -6109.36, 0, 0, 0, 0, -771.572, -5989.49, 0, 0, 0, 0, -2377.76, -5677.84, 0, 0, 0, 0, -3744.21, -5102.49, 0, 0, 0, 0, -4703.13, -4575.09, 0, 0, 0, 0, -5566.15, -3903.85, 0, 0, 0, 0, -6165.48, -3016.85, 0, 0, 0, 0, -6477.12, -1818.21, 0, 0, 0, 0, -6764.8, -523.668, 0, 0, 0, 0, -6620.96, 698.951, 0, 0, 0, 0, -6309.31, 1633.89, 0, 0, 0, 0, -5566.15, 2736.65, 0, 0, 0, 0, -4870.94, 3767.48, 0, 0, 0, 0, -3864.08, 4918.18, 0, 0, 0, 0, -2401.73, 5661.34, 0, 0, 0, 0, -675.68, 6164.78, 0, 0, 0, 0, 1505.86, 6236.69, 0, 0, 0, 0, 4094.93, 5949.02, 0, 0, 0, 0, 6108.66, 5133.94, 0, 0, 0, 0, 7523.06, 3671.59, 0, 0, 0, 0, 7976.58, 2221.44, 0, 0, 0, 0, 7942.68, 729.72, 0, 0, 0, 0, 7332.43, -694.199, 0, 0, 0, 0, 6383.14, -2524.95, 0, 0, 0, 0, 5366.06, -3745.45, 0, 0, 0, 0, 3657.18, -5072.29, 0, 0, 0, 0, 2095.89, -5751.11, 0, 0, 0, 0, 882.561, -6109.36 )
 }
 
-[sub_resource type="Curve2D" id=8]
+[sub_resource type="Curve2D" id=7]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 203.096, -1343.11, 0, 0, 0, 0, 651.067, -1168.86, 0, 0, 0, 0, 959.66, -929.391, 0, 0, 0, 0, 1124.82, -704.995, 0, 0, 0, 0, 1278.84, -417.069, 0, 0, 0, 0, 1367.37, -100.332, 0, 0, 0, 0, 1385.95, 172.914, 0, 0, 0, 0, 1397.33, 429.784, 0, 0, 0, 0, 1292.12, 777.029, 0, 0, 0, 0, 1143.3, 1034.02, 0, 0, 0, 0, 892.962, 1237.95, 0, 0, 0, 0, 525.446, 1396.93, 0, 0, 0, 0, 179.548, 1465.53, 0, 0, 0, 0, -259.699, 1401.08, 0, 0, 0, 0, -670.122, 1330.91, 0, 0, 0, 0, -802.92, 1274.42, 0, 0, 0, 0, -1092.43, 1067.5, 0, 0, 0, 0, -1320.44, 770.833, 0, 0, 0, 0, -1552.87, 274.149, 0, 0, 0, 0, -1578.18, -141.281, 0, 0, 0, 0, -1401.57, -637.193, 0, 0, 0, 0, -1187.25, -922.996, 0, 0, 0, 0, -1013.67, -1194.79, 0, 0, 0, 0, -800.809, -1288.43, 0, 0, 0, 0, -323.871, -1377.07, 0, 0, 0, 0, 58.8772, -1342.2, 0, 0, 0, 0, 203.096, -1343.11 )
 }
 
-[sub_resource type="Curve2D" id=9]
+[sub_resource type="Curve2D" id=8]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 1710.35, -9630.36, 0, 0, 0, 0, 2816.01, -9303.23, 0, 0, 0, 0, 4036.51, -8692.98, 0, 0, 0, 0, 5562.14, -7913.21, 0, 0, 0, 0, 7392.89, -6963.94, 0, 0, 0, 0, 9223.64, -5811.24, 0, 0, 0, 0, 10545.9, -4624.64, 0, 0, 0, 0, 11873.3, -3035.57, 0, 0, 0, 0, 12478.3, -895.329, 0, 0, 0, 0, 12800.6, 875.229, 0, 0, 0, 0, 12679.6, 2608.88, 0, 0, 0, 0, 12115.2, 4665.07, 0, 0, 0, 0, 11495.1, 6054.75, 0, 0, 0, 0, 9204, 8113.33, 0, 0, 0, 0, 7120.71, 9298.65, 0, 0, 0, 0, 4965.59, 10052.9, 0, 0, 0, 0, 2092.09, 10196.6, 0, 0, 0, 0, -435.406, 9811.62, 0, 0, 0, 0, -3259.81, 8723.95, 0, 0, 0, 0, -5738.21, 7215.36, 0, 0, 0, 0, -7929.26, 5958.2, 0, 0, 0, 0, -9976.63, 3695.32, 0, 0, 0, 0, -10982.4, 821.815, 0, 0, 0, 0, -10988.9, -1579.06, 0, 0, 0, 0, -10515.4, -3165.17, 0, 0, 0, 0, -9689.28, -5715.4, 0, 0, 0, 0, -8360.28, -7619.1, 0, 0, 0, 0, -7354.55, -8445.23, 0, 0, 0, 0, -5845.97, -9235.45, 0, 0, 0, 0, -4265.54, -9594.63, 0, 0, 0, 0, -2505.52, -9702.39, 0, 0, 0, 0, -673.66, -9702.39, 0, 0, 0, 0, 691.254, -9774.23, 0, 0, 0, 0, 1710.35, -9630.36 )
 }
 
-[sub_resource type="Curve2D" id=10]
+[sub_resource type="Curve2D" id=9]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -739.069, 818.885, 0, 0, 0, 0, -444.028, 1024.14, 0, 0, 0, 0, -167.794, 1094.96, 0, 0, 0, 0, 127.465, 1166.71, 0, 0, 0, 0, 316.69, 1067.96, 0, 0, 0, 0, 577.551, 934.59, 0, 0, 0, 0, 751.5, 758.796, 0, 0, 0, 0, 932.414, 570.63, 0, 0, 0, 0, 1085.37, 304.8, 0, 0, 0, 0, 1126.35, -11.0479, 0, 0, 0, 0, 1075.33, -394.999, 0, 0, 0, 0, 894.976, -734.46, 0, 0, 0, 0, 518.114, -956.455, 0, 0, 0, 0, -113.673, -1165.58, 0, 0, 0, 0, -441.484, -1092.72, 0, 0, 0, 0, -899.569, -956.35, 0, 0, 0, 0, -1150.05, -517.319, 0, 0, 0, 0, -1165.67, -200.223, 0, 0, 0, 0, -1121.93, 202.442, 0, 0, 0, 0, -1023.42, 494.548, 0, 0, 0, 0, -840.634, 686.737, 0, 0, 0, 0, -794.896, 790.705, 0, 0, 0, 0, -739.069, 818.885 )
 }
 
-[sub_resource type="Curve2D" id=11]
+[sub_resource type="Curve2D" id=10]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -1113.14, 1345.49, 0, 0, 0, 0, -772.018, 1549.19, 0, 0, 0, 0, -383.475, 1709.92, 0, 0, 0, 0, 38.8848, 1759.04, 0, 0, 0, 0, 397.618, 1720.08, 0, 0, 0, 0, 857.688, 1578.49, 0, 0, 0, 0, 1142.8, 1309.35, 0, 0, 0, 0, 1457.75, 894.415, 0, 0, 0, 0, 1705.09, 357.217, 0, 0, 0, 0, 1755.52, -206.669, 0, 0, 0, 0, 1590.42, -764.183, 0, 0, 0, 0, 1392.41, -1113.76, 0, 0, 0, 0, 694.896, -1555.9, 0, 0, 0, 0, 53.0208, -1632.82, 0, 0, 0, 0, -565.419, -1725.58, 0, 0, 0, 0, -982.237, -1542.22, 0, 0, 0, 0, -1557.92, -1123.14, 0, 0, 0, 0, -1648.67, -773.271, 0, 0, 0, 0, -1754.5, -263.813, 0, 0, 0, 0, -1629.12, 468.957, 0, 0, 0, 0, -1429.46, 922.82, 0, 0, 0, 0, -1205.57, 1267.31, 0, 0, 0, 0, -1113.14, 1345.49 )
+}
+
+[sub_resource type="Curve2D" id=11]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 19455.7, -7814.63, 0, 0, 0, 0, 15726.3, -12457.3, 0, 0, 0, 0, 11540.3, -15730, 0, 0, 0, 0, 7049.86, -16186.6, 0, 0, 0, 0, -1626.59, -15730, 0, 0, 0, 0, -9618.06, -14588.4, 0, 0, 0, 0, -13043, -12837.8, 0, 0, 0, 0, -16239.6, -8575.72, 0, 0, 0, 0, -18218.4, -3324.18, 0, 0, 0, 0, -18599, 3753.98, 0, 0, 0, 0, -15859, 10451.6, 0, 0, 0, 0, -10379.2, 14104.8, 0, 0, 0, 0, -4594.85, 16997, 0, 0, 0, 0, 2483.31, 19204.2, 0, 0, 0, 0, 11235.9, 16388.1, 0, 0, 0, 0, 17629, 13039.3, 0, 0, 0, 0, 20673.4, 6265.58, 0, 0, 0, 0, 20749.5, -2030.33, 0, 0, 0, 0, 20521.2, -5074.69, 0, 0, 0, 0, 19455.7, -7586.3, 0, 0, 0, 0, 19455.7, -7814.63 )
 }
 
 [node name="PlanetSystem" type="Node2D"]
@@ -118,7 +130,7 @@ scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 6 )
 
 [node name="Planet_orbit_1" type="Path2D" parent="."]
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
 [node name="Planet" parent="Planet_orbit_1" instance=ExtResource( 2 )]
 position = Vector2( 371.417, -3858.04 )
@@ -129,7 +141,7 @@ scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 3 )
 
 [node name="Planet_orbit_2" type="Path2D" parent="."]
-curve = SubResource( 7 )
+curve = SubResource( 6 )
 
 [node name="Planet" parent="Planet_orbit_2" instance=ExtResource( 2 )]
 position = Vector2( 858.586, -6109.36 )
@@ -140,7 +152,7 @@ scale = Vector2( 1.6, 1.6 )
 texture = ExtResource( 8 )
 
 [node name="Moon_orbit_0" type="Path2D" parent="Planet_orbit_2/Planet"]
-curve = SubResource( 8 )
+curve = SubResource( 7 )
 
 [node name="Planet" parent="Planet_orbit_2/Planet/Moon_orbit_0" instance=ExtResource( 2 )]
 position = Vector2( 203.096, -1343.11 )
@@ -151,7 +163,7 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 6 )
 
 [node name="Planet_orbit_3" type="Path2D" parent="."]
-curve = SubResource( 9 )
+curve = SubResource( 8 )
 
 [node name="Planet" parent="Planet_orbit_3" instance=ExtResource( 2 )]
 position = Vector2( 1710.35, -9630.36 )
@@ -162,7 +174,7 @@ scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 7 )
 
 [node name="Moon_orbit_0" type="Path2D" parent="Planet_orbit_3/Planet"]
-curve = SubResource( 10 )
+curve = SubResource( 9 )
 
 [node name="Planet" parent="Planet_orbit_3/Planet/Moon_orbit_0" instance=ExtResource( 2 )]
 position = Vector2( -739.069, 818.885 )
@@ -172,7 +184,7 @@ scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 6 )
 
 [node name="Planet2" parent="Planet_orbit_3/Planet/Moon_orbit_0" instance=ExtResource( 2 )]
-position = Vector2( 1046.85, -448.612 )
+position = Vector2( 1046.67, -448.944 )
 offset = 3036.64
 
 [node name="Sprite" parent="Planet_orbit_3/Planet/Moon_orbit_0/Planet2" index="0"]
@@ -180,7 +192,7 @@ scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 9 )
 
 [node name="Planet3" parent="Planet_orbit_3/Planet/Moon_orbit_0" instance=ExtResource( 2 )]
-position = Vector2( -1161.74, -164.061 )
+position = Vector2( -1161.83, -164.85 )
 offset = 6135.66
 
 [node name="Sprite" parent="Planet_orbit_3/Planet/Moon_orbit_0/Planet3" index="0"]
@@ -188,7 +200,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 9 )
 
 [node name="Moon_orbit_1" type="Path2D" parent="Planet_orbit_3/Planet"]
-curve = SubResource( 11 )
+curve = SubResource( 10 )
 
 [node name="Planet" parent="Planet_orbit_3/Planet/Moon_orbit_1" instance=ExtResource( 2 )]
 position = Vector2( -1113.14, 1345.49 )
@@ -197,6 +209,486 @@ move_speed = 300.0
 [node name="Sprite" parent="Planet_orbit_3/Planet/Moon_orbit_1/Planet" index="0"]
 scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 10 )
+
+[node name="Planet_orbit_4" type="Path2D" parent="."]
+curve = SubResource( 11 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Planet_orbit_4"]
+position = Vector2( 8293.05, -16060.2 )
+rotation = -3.03918
+offset = 14135.0
+rotate = false
+script = ExtResource( 16 )
+
+[node name="iceAsteroid1" type="Sprite" parent="Planet_orbit_4/PathFollow2D"]
+position = Vector2( -178.401, 930.264 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid2" type="Sprite" parent="Planet_orbit_4/PathFollow2D"]
+position = Vector2( -648.093, -397.328 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid3" type="Sprite" parent="Planet_orbit_4/PathFollow2D"]
+position = Vector2( 1052.12, -56.0625 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid4" type="Sprite" parent="Planet_orbit_4/PathFollow2D"]
+position = Vector2( -1343.82, 287.148 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid5" type="Sprite" parent="Planet_orbit_4/PathFollow2D"]
+position = Vector2( 410.24, 379.178 )
+texture = ExtResource( 15 )
+
+[node name="iceAsteroid6" type="Sprite" parent="Planet_orbit_4/PathFollow2D"]
+position = Vector2( -422.171, 277.584 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid7" type="Sprite" parent="Planet_orbit_4/PathFollow2D"]
+position = Vector2( -891.863, -1050.01 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid8" type="Sprite" parent="Planet_orbit_4/PathFollow2D"]
+position = Vector2( 808.347, -708.742 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid9" type="Sprite" parent="Planet_orbit_4/PathFollow2D"]
+position = Vector2( -1587.59, -365.531 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid10" type="Sprite" parent="Planet_orbit_4/PathFollow2D"]
+position = Vector2( 166.47, -273.502 )
+texture = ExtResource( 15 )
+
+[node name="PathFollow2D6" type="PathFollow2D" parent="Planet_orbit_4"]
+position = Vector2( -18237.6, 4637.33 )
+rotation = 1.18207
+offset = 56539.8
+rotate = false
+script = ExtResource( 16 )
+
+[node name="iceAsteroid1" type="Sprite" parent="Planet_orbit_4/PathFollow2D6"]
+position = Vector2( -178.401, 930.264 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid2" type="Sprite" parent="Planet_orbit_4/PathFollow2D6"]
+position = Vector2( -648.093, -397.328 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid3" type="Sprite" parent="Planet_orbit_4/PathFollow2D6"]
+position = Vector2( 1052.12, -56.0625 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid4" type="Sprite" parent="Planet_orbit_4/PathFollow2D6"]
+position = Vector2( -1343.82, 287.148 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid5" type="Sprite" parent="Planet_orbit_4/PathFollow2D6"]
+position = Vector2( 410.24, 379.178 )
+texture = ExtResource( 15 )
+
+[node name="iceAsteroid6" type="Sprite" parent="Planet_orbit_4/PathFollow2D6"]
+position = Vector2( -422.171, 277.584 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid7" type="Sprite" parent="Planet_orbit_4/PathFollow2D6"]
+position = Vector2( -891.863, -1050.01 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid8" type="Sprite" parent="Planet_orbit_4/PathFollow2D6"]
+position = Vector2( 808.347, -708.742 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid9" type="Sprite" parent="Planet_orbit_4/PathFollow2D6"]
+position = Vector2( -1587.59, -365.531 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid10" type="Sprite" parent="Planet_orbit_4/PathFollow2D6"]
+position = Vector2( 166.47, -273.502 )
+texture = ExtResource( 15 )
+
+[node name="PathFollow2D9" type="PathFollow2D" parent="Planet_orbit_4"]
+position = Vector2( 10182.4, 16727.1 )
+rotation = -0.310948
+offset = 90706.4
+rotate = false
+script = ExtResource( 16 )
+
+[node name="iceAsteroid1" type="Sprite" parent="Planet_orbit_4/PathFollow2D9"]
+position = Vector2( -178.401, 930.264 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid2" type="Sprite" parent="Planet_orbit_4/PathFollow2D9"]
+position = Vector2( -648.093, -397.328 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid3" type="Sprite" parent="Planet_orbit_4/PathFollow2D9"]
+position = Vector2( 1052.12, -56.0625 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid4" type="Sprite" parent="Planet_orbit_4/PathFollow2D9"]
+position = Vector2( -1343.82, 287.148 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid5" type="Sprite" parent="Planet_orbit_4/PathFollow2D9"]
+position = Vector2( 410.24, 379.178 )
+texture = ExtResource( 15 )
+
+[node name="iceAsteroid6" type="Sprite" parent="Planet_orbit_4/PathFollow2D9"]
+position = Vector2( -422.171, 277.584 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid7" type="Sprite" parent="Planet_orbit_4/PathFollow2D9"]
+position = Vector2( -891.863, -1050.01 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid8" type="Sprite" parent="Planet_orbit_4/PathFollow2D9"]
+position = Vector2( 808.347, -708.742 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid9" type="Sprite" parent="Planet_orbit_4/PathFollow2D9"]
+position = Vector2( -1587.59, -365.531 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid10" type="Sprite" parent="Planet_orbit_4/PathFollow2D9"]
+position = Vector2( 166.47, -273.502 )
+texture = ExtResource( 15 )
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Planet_orbit_4"]
+position = Vector2( 16342.9, -11689.7 )
+rotation = -2.24748
+offset = 4707.61
+rotate = false
+script = ExtResource( 16 )
+
+[node name="iceAsteroid1" type="Sprite" parent="Planet_orbit_4/PathFollow2D2"]
+position = Vector2( -178.401, 930.264 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid2" type="Sprite" parent="Planet_orbit_4/PathFollow2D2"]
+position = Vector2( -648.093, -397.328 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid3" type="Sprite" parent="Planet_orbit_4/PathFollow2D2"]
+position = Vector2( -1302.76, 2111.43 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid4" type="Sprite" parent="Planet_orbit_4/PathFollow2D2"]
+position = Vector2( -1343.82, 287.148 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid5" type="Sprite" parent="Planet_orbit_4/PathFollow2D2"]
+position = Vector2( 113.743, -1395.96 )
+texture = ExtResource( 15 )
+
+[node name="iceAsteroid6" type="Sprite" parent="Planet_orbit_4/PathFollow2D2"]
+position = Vector2( 947.499, 639.33 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid7" type="Sprite" parent="Planet_orbit_4/PathFollow2D2"]
+position = Vector2( -891.863, -1050.01 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid8" type="Sprite" parent="Planet_orbit_4/PathFollow2D2"]
+position = Vector2( 612.466, -5.21289 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid9" type="Sprite" parent="Planet_orbit_4/PathFollow2D2"]
+position = Vector2( -1587.59, -365.531 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid10" type="Sprite" parent="Planet_orbit_4/PathFollow2D2"]
+position = Vector2( -568.641, 489.014 )
+texture = ExtResource( 15 )
+
+[node name="PathFollow2D5" type="PathFollow2D" parent="Planet_orbit_4"]
+position = Vector2( -16556.1, -7735.75 )
+rotation = 1.9303
+offset = 43581.8
+rotate = false
+script = ExtResource( 16 )
+
+[node name="iceAsteroid1" type="Sprite" parent="Planet_orbit_4/PathFollow2D5"]
+position = Vector2( -178.401, 930.264 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid2" type="Sprite" parent="Planet_orbit_4/PathFollow2D5"]
+position = Vector2( -648.093, -397.328 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid3" type="Sprite" parent="Planet_orbit_4/PathFollow2D5"]
+position = Vector2( -1302.76, 2111.43 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid4" type="Sprite" parent="Planet_orbit_4/PathFollow2D5"]
+position = Vector2( -1343.82, 287.148 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid5" type="Sprite" parent="Planet_orbit_4/PathFollow2D5"]
+position = Vector2( 113.743, -1395.96 )
+texture = ExtResource( 15 )
+
+[node name="iceAsteroid6" type="Sprite" parent="Planet_orbit_4/PathFollow2D5"]
+position = Vector2( 947.499, 639.33 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid7" type="Sprite" parent="Planet_orbit_4/PathFollow2D5"]
+position = Vector2( -891.863, -1050.01 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid8" type="Sprite" parent="Planet_orbit_4/PathFollow2D5"]
+position = Vector2( 612.466, -5.21289 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid9" type="Sprite" parent="Planet_orbit_4/PathFollow2D5"]
+position = Vector2( -1587.59, -365.531 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid10" type="Sprite" parent="Planet_orbit_4/PathFollow2D5"]
+position = Vector2( -568.641, 489.014 )
+texture = ExtResource( 15 )
+
+[node name="PathFollow2D8" type="PathFollow2D" parent="Planet_orbit_4"]
+position = Vector2( -8236.38, 15176.2 )
+rotation = 0.463648
+offset = 71851.7
+rotate = false
+script = ExtResource( 16 )
+
+[node name="iceAsteroid1" type="Sprite" parent="Planet_orbit_4/PathFollow2D8"]
+position = Vector2( -178.401, 930.264 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid2" type="Sprite" parent="Planet_orbit_4/PathFollow2D8"]
+position = Vector2( -648.093, -397.328 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid3" type="Sprite" parent="Planet_orbit_4/PathFollow2D8"]
+position = Vector2( -1302.76, 2111.43 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid4" type="Sprite" parent="Planet_orbit_4/PathFollow2D8"]
+position = Vector2( -1343.82, 287.148 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid5" type="Sprite" parent="Planet_orbit_4/PathFollow2D8"]
+position = Vector2( 113.743, -1395.96 )
+texture = ExtResource( 15 )
+
+[node name="iceAsteroid6" type="Sprite" parent="Planet_orbit_4/PathFollow2D8"]
+position = Vector2( 947.499, 639.33 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid7" type="Sprite" parent="Planet_orbit_4/PathFollow2D8"]
+position = Vector2( -891.863, -1050.01 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid8" type="Sprite" parent="Planet_orbit_4/PathFollow2D8"]
+position = Vector2( 612.466, -5.21289 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid9" type="Sprite" parent="Planet_orbit_4/PathFollow2D8"]
+position = Vector2( -1587.59, -365.531 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid10" type="Sprite" parent="Planet_orbit_4/PathFollow2D8"]
+position = Vector2( -568.641, 489.014 )
+texture = ExtResource( 15 )
+
+[node name="PathFollow2D3" type="PathFollow2D" parent="Planet_orbit_4"]
+position = Vector2( -14037.6, -11511.6 )
+rotation = 2.21435
+offset = 38874.2
+rotate = false
+script = ExtResource( 16 )
+
+[node name="iceAsteroid1" type="Sprite" parent="Planet_orbit_4/PathFollow2D3"]
+position = Vector2( -248.933, 2779.66 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid2" type="Sprite" parent="Planet_orbit_4/PathFollow2D3"]
+position = Vector2( -648.093, -397.328 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid3" type="Sprite" parent="Planet_orbit_4/PathFollow2D3"]
+position = Vector2( -1302.76, 2111.43 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid4" type="Sprite" parent="Planet_orbit_4/PathFollow2D3"]
+position = Vector2( -3504.45, -1693.33 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid5" type="Sprite" parent="Planet_orbit_4/PathFollow2D3"]
+position = Vector2( 113.743, -1395.96 )
+texture = ExtResource( 15 )
+
+[node name="iceAsteroid6" type="Sprite" parent="Planet_orbit_4/PathFollow2D3"]
+position = Vector2( 721.604, 1380.25 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid7" type="Sprite" parent="Planet_orbit_4/PathFollow2D3"]
+position = Vector2( -2333.11, 1051.64 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid8" type="Sprite" parent="Planet_orbit_4/PathFollow2D3"]
+position = Vector2( 612.466, -5.21289 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid9" type="Sprite" parent="Planet_orbit_4/PathFollow2D3"]
+position = Vector2( -1587.59, -365.531 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid10" type="Sprite" parent="Planet_orbit_4/PathFollow2D3"]
+position = Vector2( -568.641, 489.014 )
+texture = ExtResource( 15 )
+
+[node name="PathFollow2D7" type="PathFollow2D" parent="Planet_orbit_4"]
+position = Vector2( -15063.8, 10981.8 )
+rotation = 0.588677
+offset = 63613.4
+rotate = false
+script = ExtResource( 16 )
+
+[node name="iceAsteroid1" type="Sprite" parent="Planet_orbit_4/PathFollow2D7"]
+position = Vector2( -248.933, 2779.66 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid2" type="Sprite" parent="Planet_orbit_4/PathFollow2D7"]
+position = Vector2( -648.093, -397.328 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid3" type="Sprite" parent="Planet_orbit_4/PathFollow2D7"]
+position = Vector2( -1302.76, 2111.43 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid4" type="Sprite" parent="Planet_orbit_4/PathFollow2D7"]
+position = Vector2( -3504.45, -1693.33 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid5" type="Sprite" parent="Planet_orbit_4/PathFollow2D7"]
+position = Vector2( 113.743, -1395.96 )
+texture = ExtResource( 15 )
+
+[node name="iceAsteroid6" type="Sprite" parent="Planet_orbit_4/PathFollow2D7"]
+position = Vector2( 721.604, 1380.25 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid7" type="Sprite" parent="Planet_orbit_4/PathFollow2D7"]
+position = Vector2( -2333.11, 1051.64 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid8" type="Sprite" parent="Planet_orbit_4/PathFollow2D7"]
+position = Vector2( 612.466, -5.21289 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid9" type="Sprite" parent="Planet_orbit_4/PathFollow2D7"]
+position = Vector2( -1587.59, -365.531 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid10" type="Sprite" parent="Planet_orbit_4/PathFollow2D7"]
+position = Vector2( -568.641, 489.014 )
+texture = ExtResource( 15 )
+
+[node name="PathFollow2D4" type="PathFollow2D" parent="Planet_orbit_4"]
+position = Vector2( -18270.9, -2347.68 )
+rotation = 1.62447
+offset = 49478.4
+rotate = false
+script = ExtResource( 16 )
+
+[node name="iceAsteroid1" type="Sprite" parent="Planet_orbit_4/PathFollow2D4"]
+position = Vector2( -248.933, 2779.66 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid2" type="Sprite" parent="Planet_orbit_4/PathFollow2D4"]
+position = Vector2( -648.093, -397.328 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid3" type="Sprite" parent="Planet_orbit_4/PathFollow2D4"]
+position = Vector2( -1302.76, 2111.43 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid4" type="Sprite" parent="Planet_orbit_4/PathFollow2D4"]
+position = Vector2( -3504.45, -1693.33 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid5" type="Sprite" parent="Planet_orbit_4/PathFollow2D4"]
+position = Vector2( 113.743, -1395.96 )
+texture = ExtResource( 15 )
+
+[node name="iceAsteroid6" type="Sprite" parent="Planet_orbit_4/PathFollow2D4"]
+position = Vector2( 721.604, 1380.25 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid7" type="Sprite" parent="Planet_orbit_4/PathFollow2D4"]
+position = Vector2( -2333.11, 1051.64 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid8" type="Sprite" parent="Planet_orbit_4/PathFollow2D4"]
+position = Vector2( 612.466, -5.21289 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid9" type="Sprite" parent="Planet_orbit_4/PathFollow2D4"]
+position = Vector2( -1587.59, -365.531 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid10" type="Sprite" parent="Planet_orbit_4/PathFollow2D4"]
+position = Vector2( -568.641, 489.014 )
+texture = ExtResource( 15 )
+
+[node name="PathFollow2D10" type="PathFollow2D" parent="Planet_orbit_4"]
+position = Vector2( 20701.8, 3175.06 )
+rotation = -1.55956
+offset = 109549.0
+rotate = false
+script = ExtResource( 16 )
+
+[node name="iceAsteroid1" type="Sprite" parent="Planet_orbit_4/PathFollow2D10"]
+position = Vector2( -248.933, 2779.66 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid2" type="Sprite" parent="Planet_orbit_4/PathFollow2D10"]
+position = Vector2( -648.093, -397.328 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid3" type="Sprite" parent="Planet_orbit_4/PathFollow2D10"]
+position = Vector2( -1302.76, 2111.43 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid4" type="Sprite" parent="Planet_orbit_4/PathFollow2D10"]
+position = Vector2( -3504.45, -1693.33 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid5" type="Sprite" parent="Planet_orbit_4/PathFollow2D10"]
+position = Vector2( 113.743, -1395.96 )
+texture = ExtResource( 15 )
+
+[node name="iceAsteroid6" type="Sprite" parent="Planet_orbit_4/PathFollow2D10"]
+position = Vector2( 721.604, 1380.25 )
+texture = ExtResource( 12 )
+
+[node name="iceAsteroid7" type="Sprite" parent="Planet_orbit_4/PathFollow2D10"]
+position = Vector2( -2333.11, 1051.64 )
+texture = ExtResource( 11 )
+
+[node name="iceAsteroid8" type="Sprite" parent="Planet_orbit_4/PathFollow2D10"]
+position = Vector2( 612.466, -5.21289 )
+texture = ExtResource( 13 )
+
+[node name="iceAsteroid9" type="Sprite" parent="Planet_orbit_4/PathFollow2D10"]
+position = Vector2( -1587.59, -365.531 )
+texture = ExtResource( 14 )
+
+[node name="iceAsteroid10" type="Sprite" parent="Planet_orbit_4/PathFollow2D10"]
+position = Vector2( -568.641, 489.014 )
+texture = ExtResource( 15 )
+
+[node name="Planet" parent="Planet_orbit_4" instance=ExtResource( 2 )]
+position = Vector2( 19455.7, -7814.63 )
+
+[node name="Sprite" parent="Planet_orbit_4/Planet" index="0"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 17 )
 
 [editable path="Planet_orbit_0/Planet/Moon_orbit_0"]
 
@@ -217,3 +709,5 @@ texture = ExtResource( 10 )
 [editable path="Planet_orbit_3/Planet/Moon_orbit_0/Planet3"]
 
 [editable path="Planet_orbit_3/Planet/Moon_orbit_1/Planet"]
+
+[editable path="Planet_orbit_4/Planet"]
