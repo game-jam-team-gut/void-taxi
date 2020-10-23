@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Void/background.png" type="Texture" id=1]
+[ext_resource path="res://Void/testbg.png" type="Texture" id=1]
 [ext_resource path="res://spaceranger.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Story/Story.gd" type="Script" id=3]
 
