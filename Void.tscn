@@ -24,7 +24,7 @@ autostart = true
 script = ExtResource( 7 )
 
 [node name="NewPassengerPickupPointTimer" type="Timer" parent="PassengersDestinationsAssigner"]
-wait_time = 20.0
+wait_time = 30.0
 autostart = true
 
 [node name="PlanetSystem" parent="." instance=ExtResource( 2 )]

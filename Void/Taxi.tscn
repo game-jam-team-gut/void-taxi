@@ -102,6 +102,10 @@ script = ExtResource( 2 )
 [node name="ArrowToPickupPointsManager" type="Node" parent="."]
 script = ExtResource( 13 )
 
+[node name="ArrowCleanTimer" type="Timer" parent="ArrowToPickupPointsManager"]
+wait_time = 0.5
+autostart = true
+
 [node name="PassengerSystem" type="Node" parent="."]
 script = ExtResource( 4 )
 
@@ -344,7 +348,6 @@ scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 11 )
 script = ExtResource( 12 )
 [connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer3" method="_on_Timer_timeout"]
-[connection signal="timeout" from="DayCycleSystem/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="DayCycleSystem/Timer" to="DayCycleSystem" method="_on_Timer_timeout"]
 [connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/Rent" method="_on_Timer_timeout"]
 [connection signal="area_entered" from="PassengerDetector" to="PassengerSystem" method="_on_PassengerDetector_area_entered"]

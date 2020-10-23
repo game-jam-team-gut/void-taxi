@@ -35,25 +35,26 @@ func update_arrows_count_and_destinations():
 			arrow_instance.should_be_hidden = true
 
 func got_passenger(pickup_point):
+	clean_unnecesary_arrows(pickup_point)
+
+func clean_unnecesary_arrows(pickup_point):
 	for arrow in current_arrows:
-		if arrow.destination == pickup_point:
+		if arrow.destination == pickup_point || arrow.destination == null:
 			arrow.queue_free()
 			current_arrows.erase(arrow)
-	if len(current_arrows) < MAX_ARROW_COUNT and len(points) > len(current_arrows):
+
+func _on_ArrowCleanTimer_timeout():
+	#clean_unnecesary_arrows(null)
+	if len(points) > 3:
 		for point in points:
-			var x = true
-			for arrow in current_arrows:
-				if arrow.destination == point:
-					x = false
-					break;
-			if x:
-				var index = points.find(point)
-				points[index] = points[-1]
-				points[-1] = point
-				update_arrows_count_and_destinations()
-				break;
+			if point == null:
+				points.erase(point)
+		points.sort_custom(MyCustomSorter, "custom_sort")
+		var i = len(points) - 1
+		for arrow in current_arrows:
+			arrow.destination = points[i]
+			i-=1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-	#pass
-
+class MyCustomSorter:
+	static func custom_sort(a, b):
+		return a.position.distance_to(a.player.position) < b.position.distance_to(b.player.position)
