@@ -105,6 +105,13 @@ func get_input():
 	
 	velocity = Vector2(speed, 0).rotated(rotation)
 	
+	#set_engine_sound
+	if engine_front_left || engine_front_right || engine_back_left || engine_back_right:
+		if !$AudioStreamPlayer.playing:
+			$AudioStreamPlayer.play()
+	else:
+		$AudioStreamPlayer.stop()
+	
 	#set engine particles
 	engine_particles_front_left.set_emitting(engine_front_left)
 	engine_particles_front_right.set_emitting(engine_front_right)

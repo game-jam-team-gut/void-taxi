@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Void/Taxi/taxi_body.png" type="Texture" id=1]
 [ext_resource path="res://Void/Taxi/Taxi.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Void/Taxi/arrow red.png" type="Texture" id=11]
 [ext_resource path="res://Void/Taxi/ArrowPointingToDestination.gd" type="Script" id=12]
 [ext_resource path="res://Void/Taxi/ArrowToPickupPointsManager.gd" type="Script" id=13]
+[ext_resource path="res://Void/engine.ogg" type="AudioStream" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 122.047, 67.9431 )
@@ -347,6 +348,9 @@ position = Vector2( 960, 540 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 11 )
 script = ExtResource( 12 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
 [connection signal="timeout" from="ArrowToPickupPointsManager/ArrowCleanTimer" to="ArrowToPickupPointsManager" method="_on_ArrowCleanTimer_timeout"]
 [connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/Rent" method="_on_Timer_timeout"]
 [connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer3" method="_on_Timer_timeout"]
