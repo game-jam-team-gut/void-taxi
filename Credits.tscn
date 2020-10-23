@@ -39,7 +39,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 1021.0
+margin_right = 1167.0
 margin_bottom = 213.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -47,7 +47,7 @@ text = "CREDITS"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 margin_top = 217.0
-margin_right = 1021.0
+margin_right = 1167.0
 margin_bottom = 267.0
 custom_constants/margin_top = 50
 __meta__ = {
@@ -56,8 +56,8 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
 margin_top = 271.0
-margin_right = 1021.0
-margin_bottom = 838.0
+margin_right = 1167.0
+margin_bottom = 952.0
 custom_fonts/font = SubResource( 2 )
 text = "Programmers:
 Filip Szweda
@@ -68,14 +68,16 @@ Mateusz Grzonka
 Filip Szweda
 
 Graphic desginer:
-Krzysztof kulpinski"
+Krzysztof Kulpinski
+
+Music: Sirius Beat - The Cosmos"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 margin_left = 960.0
-margin_top = 1840.0
+margin_top = 2040.0
 margin_right = 960.0
 margin_bottom = 40.0
 grow_horizontal = 2
@@ -85,8 +87,6 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="VBoxContainer2"]
-margin_right = 514.0
-margin_bottom = 49.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 text = "Back to Main Menu"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Void/Taxi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Void/PlanetSystem.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Void/testbg.png" type="Texture" id=3]
+[ext_resource path="res://Void/theme.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Void/PassengersDestinationsAssigner.gd" type="Script" id=7]
 [ext_resource path="res://Void/AsteroidSpawner.gd" type="Script" id=10]
 
@@ -42,6 +43,11 @@ centered = false
 
 [node name="Taxi" parent="." instance=ExtResource( 1 )]
 position = Vector2( 693.649, -1202.72 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
+autoplay = true
 [connection signal="timeout" from="AsteroidSpawner/SpawnTimer" to="AsteroidSpawner" method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="AsteroidSpawner/AsteroidCountIncrease" to="AsteroidSpawner" method="_on_AsteroidCountIncrease_timeout"]
 [connection signal="destination_set" from="PassengersDestinationsAssigner" to="Taxi" method="_on_PassengersDestinationsAssigner_destination_set"]
