@@ -29,6 +29,7 @@ var health = 200
 var taxi_body_broken = preload("res://Void/Taxi/taxi_body_broken.png")
 
 onready var arrow = get_node("Arrow/arrow")
+onready var arrows_to_pickups_manager = get_node("ArrowToPickupPointsManager")
 
 onready var collision_raycast_forward1 = get_node("RayCast2DForward")
 onready var collision_raycast_forward2 = get_node("RayCast2DForward2")
@@ -166,3 +167,9 @@ func _on_Timer_timeout():
 
 func _on_PassengersDestinationsAssigner_destination_set(destination):
 	arrow.set_destination(destination)
+	arrows_to_pickups_manager.set_arrows_visibility(false)
+
+
+func _on_PassengersDestinationsAssigner_new_pickup_point(pickup_point):
+	yield(get_tree().create_timer(.1), "timeout")
+	arrows_to_pickups_manager.on_new_pickup_point_created(pickup_point)

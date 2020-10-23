@@ -1,6 +1,11 @@
 extends Node
 
 signal destination_set(destination)
+signal new_pickup_point(pickup_point)
+
+var MAX_PICKUP_POINTS_NUMBER = 8
+
+var current_pickup_points = []
 
 var planets
 
@@ -27,6 +32,9 @@ func create_passenger_pickup_point(excluded_planet):
 	var y = rng.randf_range(-r, r)
 	passenger_pickup_point_instance.position = Vector2(x, y)
 	passenger_pickup_point_instance.set_global_rotation(0)
+	current_pickup_points.append(passenger_pickup_point_instance)
+	print("n")
+	emit_signal("new_pickup_point", passenger_pickup_point_instance)
 
 
 func create_destination(excluded_planet):
@@ -66,4 +74,10 @@ func _on_Taxi_passenger_pickup(planet):
 
 
 func _on_Taxi_passenger_delivered(planet):
-	create_passenger_pickup_point(planet)
+	if len(current_pickup_points) < MAX_PICKUP_POINTS_NUMBER:
+		create_passenger_pickup_point(planet)
+
+
+func _on_NewPassengerPickupPointTimer_timeout():
+	if len(current_pickup_points) < MAX_PICKUP_POINTS_NUMBER:
+		create_passenger_pickup_point(null)
