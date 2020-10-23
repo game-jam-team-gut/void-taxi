@@ -12,7 +12,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 129.689, 119.548 )
+extents = Vector2( 112.882, 108.964 )
 
 [node name="DestinationPoint" type="Area2D" groups=[
 "Destination",

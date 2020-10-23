@@ -50,11 +50,24 @@ func _on_ArrowCleanTimer_timeout():
 			if point == null:
 				points.erase(point)
 		points.sort_custom(MyCustomSorter, "custom_sort")
+		points = remove_duplicates(points)
 		var i = len(points) - 1
 		for arrow in current_arrows:
 			arrow.destination = points[i]
 			i-=1
 
+func remove_duplicates(arr):
+	var new_arr = []
+	for item in arr:
+		if not(item  in new_arr):
+			new_arr.append(item)
+	return(new_arr)
+
 class MyCustomSorter:
 	static func custom_sort(a, b):
-		return a.position.distance_to(a.player.position) < b.position.distance_to(b.player.position)
+		if a and b:
+			return a.position.distance_to(a.player.position) < b.position.distance_to(b.player.position)
+		elif a:
+			return true
+		else:
+			false

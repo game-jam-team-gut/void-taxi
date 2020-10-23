@@ -21,13 +21,21 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_P):
 		create_passenger_pickup_point(null)
 
-func create_passenger_pickup_point(excluded_planet):
+func create_passenger_pickup_point(excluded_planets):
 	var passenger_pickup_point_instance = passenger_pickup_object.instance()
-	if excluded_planet:
-		var excluded_planet_r = calculate_approximately_planet_radius(excluded_planet)
-		if excluded_planet_r > 150:
-			excluded_planet = null
-	var planet = get_random_planet(excluded_planet)
+	for point in current_pickup_points:
+		if point != null:
+			if excluded_planets == null:
+				excluded_planets = []
+			excluded_planets.append(point.get_parent())
+		else:
+			current_pickup_points.erase(point)
+	if excluded_planets:
+		for excluded_planet in excluded_planets:
+			var excluded_planet_r = calculate_approximately_planet_radius(excluded_planet)
+			if excluded_planet_r > 200:
+				excluded_planets.erase(excluded_planet)
+	var planet = get_random_planet(excluded_planets)
 	planet.add_child(passenger_pickup_point_instance)
 	var r = calculate_approximately_planet_radius(planet)
 	var rng = RandomNumberGenerator.new()
@@ -80,12 +88,12 @@ func _on_Taxi_passenger_pickup(planet):
 
 func _on_Taxi_passenger_delivered(planet):
 	if len(current_pickup_points) < MAX_PICKUP_POINTS_NUMBER:
-		create_passenger_pickup_point(planet)
+		create_passenger_pickup_point([planet])
 
 
 func _on_NewPassengerPickupPointTimer_timeout():
 	if len(current_pickup_points) < MAX_PICKUP_POINTS_NUMBER:
 		if current_destination:
-			create_passenger_pickup_point(current_destination.get_parent())
+			create_passenger_pickup_point([current_destination.get_parent()])
 		else:
 			create_passenger_pickup_point(null)
