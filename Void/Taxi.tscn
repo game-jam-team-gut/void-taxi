@@ -354,6 +354,7 @@ stream = ExtResource( 14 )
 [connection signal="timeout" from="ArrowToPickupPointsManager/ArrowCleanTimer" to="ArrowToPickupPointsManager" method="_on_ArrowCleanTimer_timeout"]
 [connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/Rent" method="_on_Timer_timeout"]
 [connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer3" method="_on_Timer_timeout"]
+[connection signal="timeout" from="DayCycleSystem/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="DayCycleSystem/Timer" to="DayCycleSystem" method="_on_Timer_timeout"]
 [connection signal="area_entered" from="PassengerDetector" to="PassengerSystem" method="_on_PassengerDetector_area_entered"]
 [connection signal="area_entered" from="BurningDetector" to="BurnManager" method="_on_BurningDetector_area_entered"]
