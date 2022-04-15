@@ -127,9 +127,11 @@ func _on_SpawnTimer_timeout():
 func _on_AsteroidCountIncrease_timeout():
 	if current_max_asteroid_count < MAX_ASTEROID_COUNT:
 		current_max_asteroid_count += 1
+	var asteroids_to_erase = []
 	for asteroid in current_asteroids:
-		if asteroid != null:
+		if is_instance_valid(asteroid):
 			if asteroid.position.distance_to(sun_system_center) > MAX_ASTEROID_DISTANCE:
 				asteroid.queue_free()
 		else:
-			current_asteroids.erase(asteroid)
+			asteroids_to_erase.append(asteroid)
+	current_asteroids.erase(asteroids_to_erase)

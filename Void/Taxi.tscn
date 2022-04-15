@@ -178,9 +178,6 @@ polygon = PoolVector2Array( 119.963, -59.1122, 104.329, -64.6113, -88.4934, -64.
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 margin_left = 10.0
 margin_right = 1500.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
 margin_right = 4.0
@@ -198,8 +195,8 @@ __meta__ = {
 
 [node name="Day" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer"]
 margin_bottom = 43.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.913725, 0.780392, 0.0509804, 1 )
+custom_fonts/font = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -214,8 +211,8 @@ __meta__ = {
 
 [node name="Health" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 margin_bottom = 43.0
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.713726, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -230,8 +227,8 @@ __meta__ = {
 
 [node name="Money" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 margin_bottom = 43.0
-custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.129412, 0.619608, 0.164706, 1 )
+custom_fonts/font = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -240,8 +237,8 @@ __meta__ = {
 margin_left = 4.0
 margin_right = 4.0
 margin_bottom = 43.0
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
 script = ExtResource( 7 )
 
 [node name="Tween" type="Tween" parent="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/Rent"]
@@ -262,8 +259,8 @@ __meta__ = {
 
 [node name="Passengers" type="Label" parent="CanvasLayer/HBoxContainer2/VBoxContainer2"]
 margin_bottom = 43.0
-custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.627451, 0.0392157, 0.807843, 1 )
+custom_fonts/font = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -271,8 +268,8 @@ __meta__ = {
 [node name="Speed" type="Label" parent="CanvasLayer/HBoxContainer2/VBoxContainer2"]
 margin_top = 47.0
 margin_bottom = 90.0
-custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0.392157, 0.501961, 1 )
+custom_fonts/font = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -295,8 +292,8 @@ margin_bottom = 400.0
 
 [node name="NewDay" type="Label" parent="CanvasLayer/HBoxContainer3/VBoxContainer3"]
 margin_bottom = 86.0
-custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 9 )
 
 [node name="Tween" type="Tween" parent="CanvasLayer/HBoxContainer3"]
 
@@ -351,11 +348,12 @@ script = ExtResource( 12 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
+
 [connection signal="timeout" from="ArrowToPickupPointsManager/ArrowCleanTimer" to="ArrowToPickupPointsManager" method="_on_ArrowCleanTimer_timeout"]
-[connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/Rent" method="_on_Timer_timeout"]
-[connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer3" method="_on_Timer_timeout"]
 [connection signal="timeout" from="DayCycleSystem/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="DayCycleSystem/Timer" to="DayCycleSystem" method="_on_Timer_timeout"]
+[connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/Rent" method="_on_Timer_timeout"]
+[connection signal="timeout" from="DayCycleSystem/Timer" to="CanvasLayer/HBoxContainer3" method="_on_Timer_timeout"]
 [connection signal="area_entered" from="PassengerDetector" to="PassengerSystem" method="_on_PassengerDetector_area_entered"]
 [connection signal="area_entered" from="BurningDetector" to="BurnManager" method="_on_BurningDetector_area_entered"]
 [connection signal="area_exited" from="BurningDetector" to="BurnManager" method="_on_BurningDetector_area_exited"]

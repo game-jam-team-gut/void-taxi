@@ -1,6 +1,6 @@
 extends Node
 
-const DAY_LENGTH = 120 #new day every 2 minutes
+const DAY_LENGTH = 60 #new day every 1 minute
 
 var day = 0
 

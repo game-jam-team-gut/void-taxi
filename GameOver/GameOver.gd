@@ -5,6 +5,3 @@ func _on_PlayButton_pressed():
 
 func _on_Button_pressed():
 	get_tree().change_scene("res://MainMenu.tscn")
-
-func _on_Quit_pressed():
-	get_tree().quit()

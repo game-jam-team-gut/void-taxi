@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Void/testbg.png" type="Texture" id=1]
 [ext_resource path="res://spaceranger.ttf" type="DynamicFontData" id=2]
@@ -13,10 +13,6 @@ size = 48
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 48
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=4]
 size = 48
 font_data = ExtResource( 2 )
 
@@ -45,10 +41,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 1418.0
+margin_right = 1406.0
 margin_bottom = 213.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "GAME OVER"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
@@ -77,27 +73,9 @@ margin_bottom = 53.0
 margin_top = 57.0
 margin_right = 514.0
 margin_bottom = 106.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Back to Main Menu"
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer2"]
-margin_top = 110.0
-margin_right = 514.0
-margin_bottom = 110.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="QuitButton" type="Button" parent="VBoxContainer2"]
-margin_top = 114.0
-margin_right = 514.0
-margin_bottom = 163.0
-custom_fonts/font = SubResource( 4 )
-text = "Quit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 [connection signal="pressed" from="VBoxContainer2/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="VBoxContainer2/MainMenuButton" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="VBoxContainer2/QuitButton" to="." method="_on_Quit_pressed"]

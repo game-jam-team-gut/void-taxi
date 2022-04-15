@@ -16,9 +16,6 @@ font_data = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -36,10 +33,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 1869.0
+margin_right = 1868.0
 margin_bottom = 1023.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "It is a long, long night. \"Night\" is, of course, 
 how your work shift has been called for hundreds
 of years and today is no different. Wheels have been
@@ -74,10 +71,11 @@ __meta__ = {
 [node name="PlayButton" type="Button" parent="VBoxContainer2"]
 margin_right = 142.0
 margin_bottom = 49.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="VBoxContainer2/PlayButton" to="." method="_on_PlayButton_pressed"]

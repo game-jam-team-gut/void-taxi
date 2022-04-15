@@ -47,9 +47,6 @@ margin_right = 1067.5
 margin_bottom = 871.5
 grow_horizontal = 2
 grow_vertical = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PlayButton" type="Button" parent="VBoxContainer2"]
 margin_right = 215.0
@@ -75,20 +72,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer2"]
-margin_top = 110.0
-margin_right = 215.0
-margin_bottom = 110.0
-
-[node name="QuitButton" type="Button" parent="VBoxContainer2"]
-margin_top = 114.0
-margin_right = 215.0
-margin_bottom = 163.0
-custom_fonts/font = ExtResource( 2 )
-text = "Quit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 [connection signal="pressed" from="VBoxContainer2/PlayButton" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer2/CreditsButton" to="." method="_on_CreditsButton_pressed"]
-[connection signal="pressed" from="VBoxContainer2/QuitButton" to="." method="_on_QuitButton_pressed"]

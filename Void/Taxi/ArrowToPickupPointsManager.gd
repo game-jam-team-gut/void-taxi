@@ -65,9 +65,9 @@ func remove_duplicates(arr):
 
 class MyCustomSorter:
 	static func custom_sort(a, b):
-		if a and b:
+		if is_instance_valid(a) and is_instance_valid(b) and a and b:
 			return a.position.distance_to(a.player.position) < b.position.distance_to(b.player.position)
-		elif a:
+		elif is_instance_valid(a) and a:
 			return true
 		else:
 			false

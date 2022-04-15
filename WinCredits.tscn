@@ -25,9 +25,6 @@ font_data = ExtResource( 3 )
 
 [node name="WinCredits" type="Control"]
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.6, 0.6 )
@@ -52,10 +49,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="MovingWinCredits/VBoxContainer"]
-margin_right = 1610.0
+margin_right = 1574.0
 margin_bottom = 645.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "See you
 void
 taxi driver..."
@@ -71,10 +68,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="MovingWinCredits/VBoxContainer2"]
-margin_right = 1021.0
+margin_right = 1004.0
 margin_bottom = 213.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "CREDITS"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -82,7 +79,7 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="MovingWinCredits/VBoxContainer2"]
 margin_top = 217.0
-margin_right = 1021.0
+margin_right = 1004.0
 margin_bottom = 267.0
 custom_constants/margin_top = 50
 __meta__ = {
@@ -91,10 +88,10 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="MovingWinCredits/VBoxContainer2"]
 margin_top = 271.0
-margin_right = 1021.0
+margin_right = 1004.0
 margin_bottom = 838.0
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 4 )
 text = "Programmers:
 Filip Szweda
 Mateusz Grzonka
@@ -123,13 +120,14 @@ __meta__ = {
 [node name="Button" type="Button" parent="MovingWinCredits/VBoxContainer3"]
 margin_right = 514.0
 margin_bottom = 49.0
-custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 5 )
 text = "Back to Main Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Timer" type="Timer" parent="MovingWinCredits"]
+
 [connection signal="pressed" from="MovingWinCredits/VBoxContainer3/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="MovingWinCredits/Timer" to="MovingWinCredits" method="_on_Timer_timeout"]

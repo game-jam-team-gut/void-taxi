@@ -56,6 +56,7 @@ position = Vector2( 693.649, -1202.72 )
 stream = ExtResource( 4 )
 volume_db = -10.0
 autoplay = true
+
 [connection signal="timeout" from="AsteroidSpawner/SpawnTimer" to="AsteroidSpawner" method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="AsteroidSpawner/AsteroidCountIncrease" to="AsteroidSpawner" method="_on_AsteroidCountIncrease_timeout"]
 [connection signal="destination_set" from="PassengersDestinationsAssigner" to="Taxi" method="_on_PassengersDestinationsAssigner_destination_set"]

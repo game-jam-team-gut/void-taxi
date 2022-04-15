@@ -24,7 +24,7 @@ func _process(delta):
 func create_passenger_pickup_point(excluded_planets):
 	var passenger_pickup_point_instance = passenger_pickup_object.instance()
 	for point in current_pickup_points:
-		if point != null:
+		if is_instance_valid(point):
 			if excluded_planets == null:
 				excluded_planets = []
 			excluded_planets.append(point.get_parent())
@@ -93,7 +93,7 @@ func _on_Taxi_passenger_delivered(planet):
 
 func _on_NewPassengerPickupPointTimer_timeout():
 	if len(current_pickup_points) < MAX_PICKUP_POINTS_NUMBER:
-		if current_destination:
+		if is_instance_valid(current_destination) and current_destination:
 			create_passenger_pickup_point([current_destination.get_parent()])
 		else:
 			create_passenger_pickup_point(null)
